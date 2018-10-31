@@ -1,0 +1,44 @@
+# Appveyor is used for Windows testing and Travis-CI for Linux and
+# OSX testing as well as generating coverage results.
+
+os:
+ - linux
+ #- osx
+
+language: python
+
+python:
+ - '3.6'
+ - '3.7-dev'
+
+install:
+ - pip install -r requirements.txt
+ - pip install -r requirements-dev.txt
+
+script:
+ - py.test --cov
+
+after_script:
+ - coverage xml
+ - python-codacy-coverage -r coverage.xml
+
+# Build local documentation
+before_deploy:
+ - pip install -r requirements-docs.txt
+ - mkdocs build --verbose --clean --strict
+
+# Deploy to gh_pages branch
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: development
+
+notifications:
+  email:
+    recipients:
+      - mikevansighem@gmail.com
+    on_success: never
+    on_failure: always
