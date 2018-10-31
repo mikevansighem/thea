@@ -1,4 +1,0 @@
-# Requirements to build documentation.
-
-mkdocs==1.0.4
-mkdocs-material==3.0.6
