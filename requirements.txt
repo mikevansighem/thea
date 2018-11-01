@@ -1,3 +1,5 @@
-workalendar>=3.1.0,<4.0.0
-arrow>=0.12.1,<1.0.0
-Pysolar>=0.8,<1.0
+# Normal requirements.
+
+arrow==0.12.1
+pvlib==0.6.0
+workalendar==3.1.0

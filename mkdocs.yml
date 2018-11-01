@@ -1,0 +1,43 @@
+site_name: 'Theia'
+site_description: 'Documentation for Theia.'
+site_author: 'Mike van Sighem'
+site_url: 'https://mikevansighem.github.io/theia/'
+
+repo_name: 'mikevansighem/theia'
+repo_url: 'https://github.com/mikevansighem/theia'
+
+theme:
+    name: 'material'
+    favicon: 'images/favicon.ico'
+    logo: 'images/theia_icon.svg'
+    language: 'en'
+
+    palette:
+      primary: 'purple'
+      accent: 'purple'
+
+    #feature:
+    #  tabs: true
+
+markdown_extensions:
+  - codehilite
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde

@@ -1,0 +1,14 @@
+[run]
+branch = True
+source = .
+
+[report]
+
+omit =
+    */python?.?/*
+    */Python?.?/*
+    *__init__*
+    *test*.py
+
+exclude_lines =
+    if __name__ == .__main__.:
