@@ -1,4 +1,4 @@
-# License
+# 📃 License
 
 Theia is available under the GNU Lesser General Public License version 3.
 

@@ -17,7 +17,6 @@ repos:
       additional_dependencies: [pep8-naming, flake8-docstrings]
     - id: requirements-txt-fixer
     - id: check-added-large-files
-    - id: check-yaml
     - id: detect-private-key
     - id: name-tests-test
     - id: check-ast
@@ -33,6 +32,12 @@ repos:
     rev: v0.3.0
     hooks:
     - id: blacken-docs
+
+# # Checks for valid YAML
+# -   repo: https://github.com/adrienverge/yamllint
+#     rev: v1.12.1
+#     hooks:
+#     - id: yamllint
 
 # # Checks makefile
 # -   repo: https://github.com/Lucas-C/pre-commit-hooks-go

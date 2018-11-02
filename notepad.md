@@ -3,8 +3,14 @@
 ## Quick todo
 -   Environment factory with location presets.
 -   Lunar: face https://pylunar.readthedocs.io/en/latest/usage.html
--   Document build system
--   Document doc system
+
+## Better CI
+-	Test on OSX
+-	Test different Linux architectures
+-   update with https://stackoverflow.com/questions/39341486/how-to-prevent-travis-from-deploying-twice
+-   Use tox 
+-   Better makefile (see cookiecutter)
+-   Add metadata
 
 ## Notes
 -   timezone according to IANA timezone

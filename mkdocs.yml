@@ -2,22 +2,32 @@ site_name: 'Theia'
 site_description: 'Documentation for Theia.'
 site_author: 'Mike van Sighem'
 site_url: 'https://mikevansighem.github.io/theia/'
-
+copyright: 'Copyright 2018 - Mike van Sighem'
 repo_name: 'mikevansighem/theia'
 repo_url: 'https://github.com/mikevansighem/theia'
 
+nav:
+  - Home: index.md
+  - Getting started: getting_started.md
+  - Testing and CI: testing_and_ci.md
+  - Contributing: contributing.md
+  - Environment:
+    - Solar position: not_available.md
+  - Hardware support:
+    - MQTT-module: not_available.md
+
 theme:
-    name: 'material'
-    favicon: 'images/favicon.ico'
-    logo: 'images/theia_icon.svg'
-    language: 'en'
+  name: 'material'
+  favicon: 'images/favicon.ico'
+  logo: 'images/theia_icon.svg'
+  language: 'en'
 
-    palette:
-      primary: 'purple'
-      accent: 'purple'
+  palette:
+    primary: 'purple'
+    accent: 'purple'
 
-    #feature:
-    #  tabs: true
+  feature:
+    tabs: true
 
 markdown_extensions:
   - codehilite

@@ -17,3 +17,5 @@ requirements:
       update: all
   - requirements-docs.txt:
       update: all
+
+pr_prefix: ":arrow_up: "

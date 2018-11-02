@@ -1,57 +1,71 @@
 # A convenience wrapper around commonly used commands and commands
 # used in continuous integration for testing and deployment.
 
-# Starts the main application
-run:
+.PHONY: help run format setup
+.DEFAULT_GOAL := help
+
+help: ## Print a help message with the defined commands
+	$(info run: starts the main application.)
+	$(info setup: runs setup.)
+	$(info precommit-install: installs pre-commit hooks.)
+	$(info precommit-update: updates versions of pre-commit hooks.)
+	$(info commit-dirty: adds commits and pushed without any precommit hooks.)
+	$(info format: formats code.)
+	$(info check-code Runs all tests.)
+	$(info check-format Checks code formatting.)
+	$(info setup-and-check: runs setup and checks.)
+	$(info docs-show: shows live documentation.")
+	$(info docs-preview: shows documentation preview.)
+	$(info docs-build: builds deocumentation.)
+	$(info clean: remove all build, test, coverage and Python artifacts.)
+
+run: ## Starts the main application
 	python -m theia
 
-# Updates and installs pre-commit hooks
-update-precommit:
-	# Auto-update is disabled because there is an issue running the
-	# latest version of black as a pre-commit hook
-	#pre-commit auto-update
+# Auto-update is disabled because there is an issue running the
+# latest version of black as a pre-commit hook
+# pre-commit auto-update
+precommit-update: ## Updates and installs pre-commit hooks
 	pre-commit install
 
-# Runs the pre-commit hooks on all files
-pre-commit:
+precommit: ## Runs the pre-commit hooks on all files
 	pre-commit run --all-files
 
-# Add, commit (while ignoring pre-commit hook) and push with a single command
-dirty-commit:
+commit-dirty: ## Add, commit (while ignoring pre-commit hook) and push with a single command
 	git add .
 	git commit -m "$(M)" --no-verify
 	git push
 
-# Formats code and documentation
-format:
-	black
+format: ## Formats code and documentation
+	black theia
+	black tests
 
-# Install requirements
-setup:
+setup: ## Install requirements
 	pip install -r requirements.txt
 	pip install -r requirements-dev.txt
 
-# Runs all tests
-check-code:
+check-code: ## Runs tests
 	py.test -v --cov
 
-# Check code and documentation formatting
-check-format:
-	flake8
+check-format: ## Check code and documentation formatting
+	flake8 theia
+	flake8 tests
 
-# Run setup and run tests
-setup-and-check: setup check-code
-	# Later we will enforce flake8
-	#check-format
+coverage-report-codacy: ## Generates coverage report for Codacy
 	coverage xml
 	python-codacy-coverage -r coverage.xml
 
-# Serves docs locally and opens them in the browser
-docs-show:
+setup-and-check: setup check-code coverage-report-codacy # Run setup and checks
+	# Later we will enforce flake8
+	#check-format
+
+docs-show: ## Opens live documentation
+	CMD /C start https://mikevansighem.github.io/theia/
+
+docs-preview: ## Serves docs locally and opens them in the browser
 	CMD /C start http://127.0.0.1:8000
 	mkdocs serve
 
-# Build documentation
-docs-build:
+docs-build: ## Build documentation
 	pip install -r requirements-docs.txt
 	mkdocs build --verbose --clean --strict
