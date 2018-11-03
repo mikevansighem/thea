@@ -24,3 +24,9 @@ class MQTTBrokerPortNotAvailible(TheiaException):
     """Raise if the MQTT broker port is not available."""
 
     pass
+
+
+class IgnoreSaved(TheiaException):
+    """Hack to raise when wanting to ignore the saved state."""
+
+    pass

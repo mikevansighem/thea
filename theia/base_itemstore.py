@@ -1,12 +1,14 @@
-from defaults import BASEITEM_NAME_TEMPLATE
 from exceptions import NameNotAvailable
 from collections import namedtuple
-
+from string import Template
 
 # Type definition for BaseItem, used for tempting and testing only
 BaseType = namedtuple("BaseType", ["default_properties"])
 BASE_TYPES = {}
 BASE_TYPES["Empty"] = BaseType(default_properties={})
+
+# Name for creating an item without a specific name
+BASEITEM_NAME_TEMPLATE = Template("$type_$number")
 
 
 class BaseItem:
@@ -73,7 +75,7 @@ class BaseStore:
         self.items = {}
 
         for saveable_item in items:
-            new(**saveable_item)
+            self.new(**saveable_item)
 
         print(f"Created or loaded a {self}.")
 

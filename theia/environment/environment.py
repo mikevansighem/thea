@@ -1,5 +1,5 @@
 import arrow
-from defaults import ENV_SETTINGS, ENV_VARIABLES
+from .default import ENV_SETTINGS, ENV_VARIABLES
 from pretty_printing import pretty_string, pretty_dict
 from . import updaters
 
