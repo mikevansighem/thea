@@ -8,7 +8,7 @@ import __main__
 LOGGING_CONFIG_LOCATION = "logging.ini"
 
 
-def setup_main_logger():
+def main_logger():
     """Sets-up main logger from configuration file."""
 
     # Logger setup
@@ -32,8 +32,12 @@ def setup_main_logger():
     return logger
 
 
-def setup_aux_logger():
+def aux_logger():
     """Setup auxiliary logger."""
 
     logger = logging.getLogger(__name__)
     return logger
+
+
+# Setup main logger upon first import
+main_logger()

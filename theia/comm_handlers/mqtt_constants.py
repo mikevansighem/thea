@@ -1,9 +1,5 @@
-"""Default values shared between modules or used by __main__.py.
+"""Constants used by mqtt modules."""
 
-Other default values can be defined within the module where they are
-being used."""
-
-# MQTT
 MQTT_PORT = 1185
 MQTT_ADRESS = "127.0.0.1"
 MQTT_REQUEST_CONFIG_TOPIC = "+/request_config"

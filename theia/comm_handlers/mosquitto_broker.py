@@ -1,14 +1,18 @@
+"""Module for starting and stopping the Mosquito mqtt broker"""
+
 # TODO: re-factor so with open can be used on it
 
 import subprocess
 import time
 import atexit
-import sys
 from exceptions import MQTTBrokerError, MQTTBrokerPortNotAvailible
+import logging_setup
 
 START_BROKER_TIMEOUT = 5  # seconds
 MOSQUITTO_PORT_IN_USE = "Error: Only one usage of each socket address (protocol/network address/port) is normally permitted."
 MOSQUITTO_STARTED = "Opening ipv4 listen socket on port"
+
+logger = logging_setup.aux_logger()
 
 
 def start_mqtt_broker(port):
@@ -39,7 +43,7 @@ def start_mqtt_broker(port):
                 )
 
             elif MOSQUITTO_STARTED in error_message:
-                print(f"Started MQTT broker at port {port}.")
+                logger.info(f"Started MQTT broker at port {port}.")
                 return broker_process
 
             # Catch all other errors and raise exception
@@ -69,7 +73,7 @@ def read_broker_stderr(broker_process):
     if line != b"":
 
         line = line.decode()
-        print(f'Message outputted by MQTT broker: "{line}"')
+        logger.debug(f'Message outputted by MQTT broker: "{line}"')
         return line
 
 
@@ -78,7 +82,7 @@ def stop_mqtt_broker(broker_process):
 
     broker_process.terminate()
     broker_process.kill()
-    print("Killed broker process.")
+    logger.info("Killed broker process.")
 
 
 def broker_status(broker_process):

@@ -3,25 +3,25 @@
 import paho.mqtt.client as mqtt
 import argparse
 import pickle
-from defaults import (
+import uuid
+import arrow
+import logging
+import logging_setup
+from exceptions import IgnoreSaved
+from comm_handlers.mqtt_constants import (
     MQTT_ADRESS,
     MQTT_PORT,
     MQTT_REQUEST_CONFIG_TOPIC,
     MQTT_SUPPLY_CONFIG_TOPIC,
     MQTT_STATUS_TOPIC,
 )
-import uuid
-import arrow
-import logging
-from exceptions import IgnoreSaved
-from logging_setup import setup_main_logger
 
 SAVED_STATE_FILE_NAME = "state_MQTT_module.pickle"
 AUTOSAVE_INTERVAL = 60 * 5
 STATUS_POST_INTERVAL = 60
 
 # Setup logger
-logger = setup_main_logger()
+logger = logging_setup.aux_logger()
 
 
 def new_config_callback(client, userdata, message):
@@ -82,7 +82,7 @@ class MQTTHardwareModule:
             if self.config["unique_identifier"] != self.unique_identifier:
                 raise Exception("Unique_identifier in configuration does not match.")
 
-        except IgnoreSaved:
+        except (IgnoreSaved, FileNotFoundError):
 
             # Request a new config
             logger.warning("No valid configuration found.")
@@ -117,6 +117,7 @@ class MQTTHardwareModule:
         )
         # Request new configuration with the current utc time
         self.publish(MQTT_REQUEST_CONFIG_TOPIC, arrow.utcnow())
+        logger.info("Requested new configuration.")
 
         while self.client.received_config is None:
             self.client.loop()

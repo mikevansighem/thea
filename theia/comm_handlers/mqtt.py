@@ -15,28 +15,13 @@ How to handle a failed message that has already been removed from the queue??
 
 """
 
-# Used form debugging
-import sys
-
-sys.path.insert(0, "../")
-
-import paho.mqtt.client as mqtt
 import pickle
 from random import randint
-from mosquitto_broker import start_mqtt_broker, stop_mqtt_broker, broker_status
-from multiprocessing import Queue
-import logging
-from defaults import MQTT_NEW_HARDWARE_TOPIC, MQTT_HARDWARE_CONFIG_TOPIC
+import paho.mqtt.client as mqtt
+from .mosquitto_broker import start_mqtt_broker, stop_mqtt_broker, broker_status
+import logging_setup
 
-
-# TODO: setup proper logger
-logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
-
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-logger.addHandler(ch)
-
+logger = logging_setup.aux_logger()
 
 # Create random client name
 MQTT_CLIENT_NAME = f"theia_mainapp_{randint(0, 100000000):08d}"
@@ -59,6 +44,9 @@ def on_message():
 
 
 def mqtt_comm_handler(message_queue, mqtt_port):
+
+    logger.info("here")
+
     # Start the broker
     broker_process = start_mqtt_broker(mqtt_port)
 
@@ -91,11 +79,3 @@ def mqtt_comm_handler(message_queue, mqtt_port):
         # Disconnect client and shutdown broker
     mqtt_client.disconnect()
     stop_mqtt_broker(broker_process)
-
-
-###################################################################################
-
-queue = Queue(10)
-queue.put(("address", "data"))
-
-mqtt_comm_handler(queue, 1894)

@@ -4,7 +4,7 @@ import paho.mqtt.client as mqtt
 import uuid
 import pickle
 import time
-from defaults import (
+from mqtt_constants import (
     MQTT_ADRESS,
     MQTT_PORT,
     MQTT_REQUEST_CONFIG_TOPIC,
