@@ -2,8 +2,9 @@
 
 Found a bug? Have a good idea for improving Theia? Head over to Theia's 
 Github page and create and submit a new issues/feature request. Want 
-to contribute your code? Go to the [contributing code]() section and
-submit a pull-request.
+to contribute your code? Go to the [contributing code](https://mikevansighem
+.github.io/theia/contributing/#contributing-code) section and submit a 
+pull-request.
 
 ## Feature request or bug report
 
@@ -39,7 +40,7 @@ No need to file an issue first immediately create an pull-request.
 
 Once you create a pull-request your code code will be checked by our 
 CI system. To find out which checks are being run head over to the 
-[testing]() page. 
+[testing](https://mikevansighem.github.io/theia/testing_and_ci/) page. 
 If all the checks pass one of the core-contributers will accept you 
 pull-request and merge it with the master branch to be deployed.
 
@@ -47,7 +48,8 @@ pull-request and merge it with the master branch to be deployed.
 
 The code style we use is ["Black"](https://github.com/ambv/black), but 
 don't worry about that to much as long as you have the provided 
-[pre-commit hooks]() installed there is nothing for you to do. Black 
+[pre-commit hooks](https://mikevansighem.github.io/theia/testing_and
+_ci/#pre-commit-hooks) installed there is nothing for you to do. Black 
 takes over the minutiae of hand-formatting. One thing Black cannot solve
 is your variable naming. Please keep these according to 
 [PEP-8](https://www.python.org/dev/peps/pep-0008/). 
