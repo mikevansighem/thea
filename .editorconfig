@@ -16,6 +16,7 @@ end_of_line = lf
 indent_style = tab
 
 [*.md]
+indent_style = space
 trim_trailing_whitespace = false
 
 # YAML Files
