@@ -2,6 +2,9 @@ import arrow
 from .default import ENV_SETTINGS, ENV_VARIABLES
 from pretty_printing import pretty_string, pretty_dict
 from . import updaters
+import logging_setup
+
+logger = logging_setup.aux_logger()
 
 
 class Environment:
@@ -27,7 +30,7 @@ class Environment:
         # Set the non missing variables back to the passed values
         self.variables.update(variables)
 
-        print(f"Created a new instance of {self}.")
+        logger.debug(f"Created a new instance of {self}.")
 
     def __repr__(self) -> str:
 
@@ -84,20 +87,22 @@ class Environment:
         """Updates environment settings."""
 
         self.settings.update(new_settings)
-        print(
+        logger.info(
             f"Updated settings of {self} with {len(new_settings)} new or changed values."
         )
 
     def print(self) -> None:
         """Print an overview of the current environment."""
 
-        print("===========")
-        print("environment")
-        print("===========")
+        logger.info("===========")
+        logger.info("environment")
+        logger.info("===========")
 
-        print("Last Update: {}".format(self._last_update.time()))
-        print("Real Update Rate: {}".format(pretty_string(self._real_update_rate)))
-        print("Sim Update Rate: {}".format(pretty_string(self._sim_update_rate)))
+        logger.info("Last Update: {}".format(self._last_update.time()))
+        logger.info(
+            "Real Update Rate: {}".format(pretty_string(self._real_update_rate))
+        )
+        logger.info("Sim Update Rate: {}".format(pretty_string(self._sim_update_rate)))
 
         self.print_settings()
         self.print_values()
@@ -105,21 +110,21 @@ class Environment:
     def print_settings(self) -> None:
         """Prints all environment variables."""
 
-        print("--------------------")
-        print("ENVIRONMENT SETTINGS")
-        print("--------------------")
+        logger.info("--------------------")
+        logger.info("ENVIRONMENT SETTINGS")
+        logger.info("--------------------")
 
         pretty_settings = pretty_dict(self.settings)
         for key in pretty_settings:
-            print("{}: {}".format(key, pretty_settings[key]))
+            logger.info("{}: {}".format(key, pretty_settings[key]))
 
     def print_values(self) -> None:
         """Prints all environment variables."""
 
-        print("---------------------")
-        print("ENVIRONMENT VARIABLES")
-        print("---------------------")
+        logger.info("---------------------")
+        logger.info("ENVIRONMENT VARIABLES")
+        logger.info("---------------------")
 
         pretty_settings = pretty_dict(self.variables)
         for key in pretty_settings:
-            print("{}: {}".format(key, pretty_settings[key]))
+            logger.info("{}: {}".format(key, pretty_settings[key]))

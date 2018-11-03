@@ -7,9 +7,12 @@ Currently implemented in main:
 - Run environment things linker
 """
 
+import logging_setup
 from environment import Environment
 from things import ThingsStore
 from env_thing_linker import EnvThingsLinker
+
+logger = logging_setup.aux_logger()
 
 
 def main():

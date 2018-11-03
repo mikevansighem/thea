@@ -1,6 +1,7 @@
 from exceptions import NameNotAvailable
 from collections import namedtuple
 from string import Template
+import logging_setup
 
 # Type definition for BaseItem, used for tempting and testing only
 BaseType = namedtuple("BaseType", ["default_properties"])
@@ -9,6 +10,8 @@ BASE_TYPES["Empty"] = BaseType(default_properties={})
 
 # Name for creating an item without a specific name
 BASEITEM_NAME_TEMPLATE = Template("$type_$number")
+
+logger = logging_setup.aux_logger()
 
 
 class BaseItem:
@@ -31,7 +34,7 @@ class BaseItem:
         self.properties = self.type_dict[self.type_].default_properties
         self.properties.update(**kwargs)
 
-        print(f"Created or loaded {self}")
+        logger.debug(f"Created or loaded {self}.")
 
     def __repr__(self) -> str:
 
@@ -77,7 +80,7 @@ class BaseStore:
         for saveable_item in items:
             self.new(**saveable_item)
 
-        print(f"Created or loaded a {self}.")
+        logger.debug(f"Created or loaded a {self}.")
 
     def __repr__(self):
 
@@ -166,7 +169,7 @@ class BaseStore:
                     old_item.update(kwargs)
                     self.new(**old_item)
 
-                    print(f"Edited {name} with {len(kwargs)-1} updated values.")
+                    logger.info(f"Edited {name} with {len(kwargs)-1} updated values.")
 
                     return
 
