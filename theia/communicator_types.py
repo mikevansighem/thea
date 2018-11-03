@@ -1,16 +1,14 @@
-import thing_updaters
 from collections import namedtuple
+import comm_handlers
 
 # Values of the named tuple need to be of type: any, list of types, dict, callable
-ThingType = namedtuple(
-    "ThingType", ["default_value", "permitted_values", "default_properties", "updater"]
+CommunicatorType = namedtuple(
+    "CommunicatorType", ["comm_handler", "default_properties"]
 )
 
-# A dictonary of all ThingTypes
-THING_TYPES = {}
-THING_TYPES["Shop"] = ThingType(
-    default_value=False,
-    permitted_values=[bool],
-    default_properties={},
-    updater=thing_updaters.shops,
+# A contradictory of all ThingTypes
+COMMUNICATOR_TYPES = {}
+COMMUNICATOR_TYPES["mqtt"] = CommunicatorType(
+    comm_handler=comm_handlers.mqtt,
+    default_properties={"mqtt_port": comm_handlers.MQTT_PORT},
 )

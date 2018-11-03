@@ -28,11 +28,14 @@ class BaseItem:
         self.name = name
 
         # Add any other attributes defined in _additional_init
-        kwargs = self._additional_init(**kwargs)
+        kwargs = self._additional_attributes(**kwargs)
 
         # Overwrite default properties with passed properties
         self.properties = self.type_dict[self.type_].default_properties
         self.properties.update(**kwargs)
+
+        # Handle remaining setup
+        self._additional_init()
 
         logger.debug(f"Created or loaded {self}.")
 
@@ -52,7 +55,7 @@ class BaseItem:
 
         return saveable_format
 
-    def _additional_init(self, **kwargs) -> dict:
+    def _additional_attributes(self, **kwargs) -> dict:
         """Handles setting attributes not defined in the BaseItem class"""
 
         return kwargs
@@ -63,6 +66,10 @@ class BaseItem:
         saveable_format = {}
 
         return saveable_format
+
+    def _additional_init(self) -> None:
+        """Handles additional init after properties are set."""
+        pass
 
 
 class BaseStore:
@@ -113,17 +120,12 @@ class BaseStore:
     def _generate_name(self, type_: str) -> str:
         """Returns the name with lowest available number."""
 
-        partial_name = self.name_template.substitude(type_=type_)
-
         counter = 0
-
-        generated_name = partial_name
-        generated_name.substitude(number=counter)
+        generated_name = self.name_template.substitute(type_=type_, number=counter)
 
         while not self._name_available(generated_name):
 
-            generated_name = partial_name
-            generated_name.substitude(number=counter)
+            generated_name = self.name_template.substitute(type_=type_, number=counter)
             counter += 1
 
         return generated_name

@@ -2,6 +2,7 @@
 
 from environment import Environment
 from things import ThingsStore
+from communicators import CommunicatorStore
 from env_thing_linker import EnvThingsLinker
 from exceptions import TheiaException
 
@@ -14,4 +15,10 @@ __copyright__ = "Copyright 2018, Mike van Sighem"
 __maintainer__ = "Mike van Sighem"
 __credits__ = ["Mike van Sighem"]
 
-__all__ = ["Environment", "ThingsStore", "EnvThingsLinker", "TheiaException"]
+__all__ = [
+    "Environment",
+    "ThingsStore",
+    "CommunicatorStore",
+    "EnvThingsLinker",
+    "TheiaException",
+]

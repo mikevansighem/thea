@@ -17,7 +17,7 @@ How to handle a failed message that has already been removed from the queue??
 
 import pickle
 from random import randint
-import paho.mqtt.client as mqtt
+import paho.mqtt.client as paho_mqtt
 from .mosquitto_broker import start_mqtt_broker, stop_mqtt_broker, broker_status
 import logging_setup
 
@@ -43,15 +43,13 @@ def on_message():
     pass
 
 
-def mqtt_comm_handler(message_queue, mqtt_port):
-
-    logger.info("here")
+def mqtt(message_queue, mqtt_port):
 
     # Start the broker
     broker_process = start_mqtt_broker(mqtt_port)
 
     # Create client object
-    mqtt_client = mqtt.Client(MQTT_CLIENT_NAME)
+    mqtt_client = paho_mqtt.Client(MQTT_CLIENT_NAME)
 
     # Add port as attribute for logging
     mqtt_client.port = mqtt_port

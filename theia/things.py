@@ -8,14 +8,14 @@ class Thing(BaseItem):
     # Define attributes that can be changed when inheriting this class
     type_dict = THING_TYPES
 
-    def _additional_init(self, **kwargs) -> dict:
+    def _additional_attributes(self, **kwargs) -> dict:
         """Handles setting atributes not defined in the BaseItem class"""
 
         # Set value to default if it has not been passed
         self.value = kwargs.get("value", self.type_dict[self.type_].default_value)
 
         # Remove value so it does not end up in the properties
-        kwargs.pop("value")
+        kwargs.pop("value", None)
 
         return kwargs
 
@@ -28,13 +28,13 @@ class Thing(BaseItem):
         return saveable_format
 
     @property
-    def value(self, value):
+    def value(self):
         """Returns the value."""
 
         return self._value
 
     @value.setter
-    def value(self):
+    def value(self, value):
         """Checks value for correct `type` and propagates value change to hardware."""
 
         if type(value) in THING_TYPES[self.type_].permitted_values:

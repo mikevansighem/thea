@@ -1,6 +1,12 @@
+"""Module with classes used to communicate with hardware. """
+
 from base_itemstore import BaseItem, BaseStore
-from communiactor_types import COMMUNICATOR_TYPES
+from communicator_types import COMMUNICATOR_TYPES
+from exceptions import CommNotConnectedError
 from multiprocessing import Queue, Process
+import logging_setup
+
+logger = logging_setup.aux_logger()
 
 
 class Communicator(BaseItem):
@@ -9,7 +15,7 @@ class Communicator(BaseItem):
     # Define attributes that should be changed when inheriting this class
     type_dict = COMMUNICATOR_TYPES
 
-    def _additional_init(self, **kwargs) -> dict:
+    def _additional_attributes(self, **kwargs) -> dict:
         """Handles setting attributes not defined in the BaseItem class"""
 
         # Set initial status
@@ -17,13 +23,17 @@ class Communicator(BaseItem):
 
         # Create (MQTT) communicator daemon process
         self.comm_handler = self.type_dict[self.type_].comm_handler
+
+        return kwargs
+
+    def _additional_init(self):
+        """Setup MQTT comm handler"""
+
         self.comm_handler = Process(
             target=self.comm_handler,
             args=(self.message_queue, *self.properties),
             daemon=True,
         )
-
-        return kwargs
 
     @property
     def status(self):
@@ -66,7 +76,7 @@ class Communicator(BaseItem):
             while not self.message_queue.empty():
                 self.message_queue.get()
 
-            print(
+            logger.info(
                 f"Disconnected {self} and deleted {no_unsend_messages} unsent messages."
             )
 

@@ -8,7 +8,7 @@ ThingType = namedtuple(
 
 # A dictonary of all ThingTypes
 THING_TYPES = {}
-THING_TYPES["Shop"] = ThingType(
+THING_TYPES["shop"] = ThingType(
     default_value=False,
     permitted_values=[bool],
     default_properties={},

@@ -10,6 +10,7 @@ Currently implemented in main:
 import logging_setup
 from environment import Environment
 from things import ThingsStore
+from communicators import CommunicatorStore
 from env_thing_linker import EnvThingsLinker
 
 logger = logging_setup.aux_logger()
@@ -17,9 +18,15 @@ logger = logging_setup.aux_logger()
 
 def main():
 
+    # Create base classes
     environment = Environment()
     things_store = ThingsStore()
+    communicator_store = CommunicatorStore()
     env_thing_linker = EnvThingsLinker()
+
+    # Add some entries to the stores
+    things_store.new("shop")
+    communicator_store.new("mqtt")
 
     while True:
 

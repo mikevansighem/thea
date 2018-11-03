@@ -4,7 +4,7 @@ import random
 def model_updater(things, target_value):
 
     current_on = sum([t.value for t in things]) / float(len(things))
-    difference = target_on - current_on
+    difference = target_value - current_on
 
     if difference > 0:
 
