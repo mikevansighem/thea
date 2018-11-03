@@ -15,6 +15,7 @@ repos:
     hooks:
     - id: flake8
       additional_dependencies: [pep8-naming, flake8-docstrings]
+      args: ['--config=.flake8']
     - id: requirements-txt-fixer
     - id: check-added-large-files
     - id: detect-private-key

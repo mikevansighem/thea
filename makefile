@@ -48,8 +48,8 @@ check-code: ## Runs tests
 	py.test -v --cov
 
 check-format: ## Check code and documentation formatting
-	flake8 theia
-	flake8 tests
+	flake8 theia --config=.flake8
+	flake8 tests --config=.flake8
 
 coverage-report-codacy: ## Generates coverage report for Codacy
 	coverage xml
