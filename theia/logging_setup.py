@@ -39,5 +39,14 @@ def aux_logger():
     return logger
 
 
+def vebosity(logger, verbose=False):
+    """Adjusts verbosity of the printing to console"""
+
+    if verbose is True:
+        logger.parent.handlers[0].setLevel(logging.DEBUG)
+    else:
+        logger.parent.handlers[0].setLevel(logging.INFO)
+
+
 # Setup main logger upon first import
 main_logger()

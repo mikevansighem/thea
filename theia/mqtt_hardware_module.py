@@ -5,7 +5,6 @@ import argparse
 import pickle
 import uuid
 import arrow
-import logging
 import logging_setup
 from exceptions import IgnoreSaved
 from comm_handlers.mqtt_constants import (
@@ -196,10 +195,7 @@ def main():
     args = parser.parse_args()
 
     # Set verbosity level of logger
-    if args.verbose is True:
-        logger.setLevel(logging.DEBUG)
-    else:
-        logger.setLevel(logging.INFO)
+    logging_setup.vebosity(logger, args.verbose)
 
     # Initialize and run
     MQTTHardwareModule(args.type, args.ignore_config).run()
