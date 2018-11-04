@@ -15,15 +15,15 @@ def main_logger():
 
     # Logger setup
     try:
+        logs_dir = os.path.join(os.path.dirname(__file__), LOGS_DIRECTORY)
+
         # Create logs directory
-        if not os.path.exists(LOGS_DIRECTORY):
-            os.makedirs(LOGS_DIRECTORY)
+        if not os.path.exists(logs_dir):
+            os.makedirs(logs_dir)
 
         # Setup log directory relative to this module
         log_file = os.path.basename(__main__.__file__.split(".")[0]) + ".log"
-        logging.log_location = os.path.join(
-            os.path.dirname(__file__), LOGS_DIRECTORY, log_file
-        )
+        logging.log_location = os.path.join(logs_dir, log_file)
         logger = fileConfig(
             os.path.join(os.path.dirname(__file__), LOGGING_CONFIG_LOCATION)
         )
