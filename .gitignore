@@ -117,4 +117,4 @@ dmypy.json
 .pyre/
 
 # Theia savefiles
-.pickle
+*.pickle
