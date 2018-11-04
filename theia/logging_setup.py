@@ -5,7 +5,9 @@ import os
 from logging.config import fileConfig
 import __main__
 
+# Make log config relative to module
 LOGGING_CONFIG_LOCATION = "logging.ini"
+LOGS_DIRECTORY = "logs"
 
 
 def main_logger():
@@ -14,15 +16,21 @@ def main_logger():
     # Logger setup
     try:
         # Create logs directory
-        if not os.path.exists("logs"):
-            os.makedirs("logs")
+        if not os.path.exists(LOGS_DIRECTORY):
+            os.makedirs(LOGS_DIRECTORY)
 
-        # Setup log name
-        log_file = os.path.basename(__main__.__file__.split(".")[0])
-        logging.log_location = f"logs\\{log_file}.log"
-        logger = fileConfig(LOGGING_CONFIG_LOCATION)
+        # Setup log directory relative to this module
+        log_file = os.path.basename(__main__.__file__.split(".")[0]) + ".log"
+        logging.log_location = os.path.join(
+            os.path.dirname(__file__), LOGS_DIRECTORY, log_file
+        )
+        logger = fileConfig(
+            os.path.join(os.path.dirname(__file__), LOGGING_CONFIG_LOCATION)
+        )
+
     except KeyError:
         raise FileNotFoundError(f"Could not find {LOGGING_CONFIG_LOCATION}.")
+
     else:
         logger = logging.getLogger(__name__)
 

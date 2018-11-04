@@ -1,24 +1,33 @@
+"""Checks thing type definitions"""
+
 from thing_types import THING_TYPES
 from thing_types import ThingType
 
 
-def test_thing_type_defenitions():
+def test_is_thing_type():
+    """Check if instance of ThingType"""
 
     for key, item in THING_TYPES.items():
-
-        # Check if it is a ThingType
         assert isinstance(item, ThingType)
 
-        # Check if a default value has been set
-        assert item.default_value is not None
 
-        # Check if it is a list of types
-        assert isinstance(item.permitted_values, list)
+def test_permitted_values_iterable():
+    """Permitted value is type or range."""
+
+    for key, item in THING_TYPES.items():
         for item_in_list in item.permitted_values:
-            assert isinstance(item_in_list, type)
+            assert isinstance(item_in_list, type) or isinstance(item_in_list, type)
 
-        # Check if dict
+
+def test_properties_are_dict():
+    """Properties are a dictionary.."""
+
+    for key, item in THING_TYPES.items():
         assert isinstance(item.default_properties, dict)
 
-        # Check if function
+
+def test_updater_is_callable():
+    """Updater needs to be callable."""
+
+    for key, item in THING_TYPES.items():
         assert hasattr(item.updater, "__call__")
