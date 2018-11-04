@@ -14,6 +14,7 @@ from comm_handlers.mqtt_constants import (
     MQTT_SUPPLY_CONFIG_TOPIC,
     MQTT_STATUS_TOPIC,
 )
+from mqtt_hardware_types import HARDWARE_TYPES
 
 SAVED_STATE_FILE_NAME = "state_MQTT_module.pickle"
 AUTOSAVE_INTERVAL = 60 * 5
@@ -24,11 +25,21 @@ logger = logging_setup.aux_logger()
 
 
 def new_config_callback(client, userdata, message):
+    """Handles decoding of a new configuration"""
 
     received_config = pickle.loads(message.payload)
     logger.info(f"Received new configuration from controller.")
     logger.debug(f"Received configuration: '{received_config}'.")
     client.received_config = received_config
+
+
+def message_callback(client, userdata, message):
+
+    pin = message.topic.split("/")[-1]
+
+    if int(pin) in HARDWARE_TYPES[client.hardware_type]:
+        value = pickle.loads(message.payload)
+        HARDWARE_TYPES[client.hardware_type][int(pin)](value)
 
 
 class MQTTHardwareModule:
@@ -42,6 +53,7 @@ class MQTTHardwareModule:
 
         # Create MQTT client
         self.client = mqtt.Client(self.unique_identifier)
+        self.client.hardware_type = self.hardware_type
 
         # Set the will to revert status to False upon disconnect
         self.client.will_set(
@@ -114,8 +126,8 @@ class MQTTHardwareModule:
         self.client.subscribe(
             MQTT_SUPPLY_CONFIG_TOPIC.replace("+", self.unique_identifier)
         )
-        # Request new configuration with the current utc time
-        self.publish(MQTT_REQUEST_CONFIG_TOPIC, arrow.utcnow())
+        # Request new configuration for hardware type
+        self.publish(MQTT_REQUEST_CONFIG_TOPIC, self.hardware_type)
         logger.info("Requested new configuration.")
 
         while self.client.received_config is None:
@@ -163,6 +175,8 @@ class MQTTHardwareModule:
 
     def run(self):
 
+        self.client.subscribe(f"{self.unique_identifier}/#")
+        self.client.on_message = message_callback
         logger.info("Starting loop.")
 
         while True:
@@ -180,9 +194,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Starts a (simulated) MQTT hardware module from the CLI."
     )
-    parser.add_argument(
-        "-t", "--type", help="Hardware type.", default="placeholder_hardware_type"
-    )
+    parser.add_argument("-t", "--type", help="Hardware type.", default="pi_binary_out")
     parser.add_argument(
         "-v", "--verbose", help="Verbose printing.", action="store_true"
     )
