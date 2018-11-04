@@ -9,6 +9,7 @@ repo_url: 'https://github.com/mikevansighem/theia'
 nav:
   - Home: index.md
   - Getting started: getting_started.md
+  - How it works: how_it_works.md
   - Testing and CI: testing_and_ci.md
   - Contributing: contributing.md
   - Environment:

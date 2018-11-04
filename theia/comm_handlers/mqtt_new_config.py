@@ -11,6 +11,22 @@ from mqtt_constants import (
     MQTT_SUPPLY_CONFIG_TOPIC,
 )
 
+##############################################################################
+
+from collections import namedtuple
+
+# type is a functional output type
+topicConfig = namedtuple("topicConfig", ["type_", "endpoints", "properties"])
+
+# key is the topic, item is an instance of topic configuration
+CONFIGURATION_EXAMPLE = {
+    "topic1": topicConfig("switch", [1, 2, 3], {}),
+    "topic2": topicConfig("blink", [0, 5], {"interval": 5}),
+    "topic3": topicConfig("switch", [4], {}),
+}
+
+#############################################################################
+
 
 def supply_config_callback(client, userdata, message):
     """Handles a new config request"""
@@ -18,9 +34,8 @@ def supply_config_callback(client, userdata, message):
     module_identifier = message.topic.split("/")[0]
     print(f"Received new configuration request from {module_identifier}.")
 
-    # Temp module configuration
-    new_module_configuration = {"fake_config_name": "fake_config_value"}
-    new_module_configuration["unique_identifier"] = module_identifier
+    # Example module configuration
+    new_module_configuration = CONFIGURATION_EXAMPLE
 
     # Publish new configuration
     client.publish(

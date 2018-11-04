@@ -1,5 +1,7 @@
 """MQTT hardware module that can be started from the cli"""
 
+# TODO only save id and hw type in the client object
+
 import paho.mqtt.client as mqtt
 import argparse
 import pickle
@@ -14,7 +16,11 @@ from comm_handlers.mqtt_constants import (
     MQTT_SUPPLY_CONFIG_TOPIC,
     MQTT_STATUS_TOPIC,
 )
-from mqtt_hardware_types import HARDWARE_TYPES
+from functional_endpoints import (  # noqa: F401
+    handler,
+    FUNCTIONAL_OUTPUT_SETTERS,
+    topicConfig,
+)
 
 SAVED_STATE_FILE_NAME = "state_MQTT_module.pickle"
 AUTOSAVE_INTERVAL = 60 * 5
@@ -22,6 +28,10 @@ STATUS_POST_INTERVAL = 60
 
 # Setup logger
 logger = logging_setup.aux_logger()
+
+
+def on_log_callback(client, userdata, level, buf):
+    logger.info(buf)
 
 
 def new_config_callback(client, userdata, message):
@@ -34,12 +44,25 @@ def new_config_callback(client, userdata, message):
 
 
 def message_callback(client, userdata, message):
+    """Handle messages without specific callback."""
 
-    pin = message.topic.split("/")[-1]
+    logger.info(f'Received message "{message.payload}" on topic "{message.topic}".')
 
-    if int(pin) in HARDWARE_TYPES[client.hardware_type]:
+    # Only keep last part of topic
+    topic = message.topic.split("/")[-1]
+
+    # If topic is a functional endpoint add value to queue
+    if topic in client.functional_endpoints:
+        functional_endpoint = topic
         value = pickle.loads(message.payload)
-        HARDWARE_TYPES[client.hardware_type][int(pin)](value)
+        logger.info(
+            f'Received value "{value}" for functional endpoint "{functional_endpoint}".'
+        )
+        process, queue = client.functional_endpoints[functional_endpoint]
+        queue.put(value)
+        logger.info(
+            f'Added value "{value}" to queue of functional endpoint "{functional_endpoint}".'
+        )
 
 
 class MQTTHardwareModule:
@@ -89,9 +112,11 @@ class MQTTHardwareModule:
             # Check if a previous config is present
             self.config = self.load_config()
 
+            # TODO check id match
+
             # Check if the identifier matches
-            if self.config["unique_identifier"] != self.unique_identifier:
-                raise Exception("Unique_identifier in configuration does not match.")
+            # if self.config["unique_identifier"] != self.unique_identifier:
+            #    raise Exception("Unique_identifier in configuration does not match.")
 
         except (IgnoreSaved, FileNotFoundError):
 
@@ -102,6 +127,9 @@ class MQTTHardwareModule:
         finally:
 
             logger.info("Completed retrieval of a configuration.")
+
+        # Setup configuration
+        self.initalize_configuration(self.config)
 
         # Setup is completed run module
         self.run()
@@ -155,7 +183,7 @@ class MQTTHardwareModule:
         except AttributeError:
             self.publish(MQTT_STATUS_TOPIC, True)
             self.last_status_post = arrow.utcnow()
-            logger.debug("Renewed status.")
+            logger.info("Renewed status.")
 
     def auto_save(self):
         """auto save configuration"""
@@ -175,6 +203,7 @@ class MQTTHardwareModule:
 
     def run(self):
 
+        self.client.on_log = on_log_callback
         self.client.subscribe(f"{self.unique_identifier}/#")
         self.client.on_message = message_callback
         logger.info("Starting loop.")
@@ -187,6 +216,30 @@ class MQTTHardwareModule:
             # Process messages
             self.client.loop()
 
+    def initalize_configuration(self, configuration):
+        """Set-sup the passed configuration"""
+
+        logger.info("Starting configuration of functional endpoints.")
+
+        self.client.functional_endpoints = {}
+        for topic, topic_config in configuration.items():
+
+            # Subscribe to provided keys
+            self.client.subscribe(f"{self.unique_identifier}/{topic}")
+
+            # Setup using output handler
+            process, queue = handler(
+                hardware_type=self.hardware_type,
+                setter=FUNCTIONAL_OUTPUT_SETTERS[topic_config.type_].setter,
+                endpoints=topic_config.endpoints,
+                **topic_config.properties,
+            )
+
+            # Store the processes and keys in a dictionary
+            self.client.functional_endpoints[topic] = (process, queue)
+
+        logger.info("Completed configuration of functional endpoints.")
+
 
 def main():
     """Handles initial argument to start the hardware module."""
@@ -194,7 +247,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Starts a (simulated) MQTT hardware module from the CLI."
     )
-    parser.add_argument("-t", "--type", help="Hardware type.", default="pi_binary_out")
+    parser.add_argument("-t", "--type", help="Hardware type.", default="pi_mixed")
     parser.add_argument(
         "-v", "--verbose", help="Verbose printing.", action="store_true"
     )
