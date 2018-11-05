@@ -5,14 +5,12 @@
 import subprocess
 import time
 import atexit
-from exceptions import MQTTBrokerError, MQTTBrokerPortNotAvailible
-import logging_setup
+from ..exceptions import MQTTBrokerError, MQTTBrokerPortNotAvailible
+from .. import logger
 
 START_BROKER_TIMEOUT = 5  # seconds
 MOSQUITTO_PORT_IN_USE = "Error: Only one usage of each socket address (protocol/network address/port) is normally permitted."
 MOSQUITTO_STARTED = "Opening ipv4 listen socket on port"
-
-logger = logging_setup.aux_logger()
 
 
 def start_mqtt_broker(port):

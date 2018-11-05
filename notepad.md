@@ -3,14 +3,21 @@
 ## Quick todo
 -   Environment factory with location presets.
 -   Lunar: face https://pylunar.readthedocs.io/en/latest/usage.html
+-   Handle warnings in logging
+-   Main calls CLI, CLI maps directly to calls to Theia world and its stores
+-   Disable logging from other modules
 
-## Better CI
--	Test on OSX
--	Test different Linux architectures
+
+## Release as PyPi package
+-   [] Test on OSX
+-   [] Tox for testing
+-   [] Version tags
+-   [] Tox has environments for flake8, coverage, docs and 
+
+### Notes on release PyPi
 -   update with https://stackoverflow.com/questions/39341486/how-to-prevent-travis-from-deploying-twice
--   Use tox 
--   Better makefile (see cookiecutter)
--   Add metadata
+-   Better makefile (see cookiecutter and cards)
+-   Switch to tox for all testing. Setup envs for flake 8 and coverage
 
 ## Notes
 -   timezone according to IANA timezone

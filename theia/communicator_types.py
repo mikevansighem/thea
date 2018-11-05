@@ -1,5 +1,6 @@
 from collections import namedtuple
-import comm_handlers
+
+from . import comm_handlers
 
 # Values of the named tuple need to be of type: any, list of types, dict, callable
 CommunicatorType = namedtuple(

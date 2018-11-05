@@ -1,5 +1,5 @@
-from base_itemstore import BaseItem, BaseStore
-from thing_types import THING_TYPES
+from .base_itemstore import BaseItem, BaseStore
+from .thing_types import THING_TYPES
 
 
 class Thing(BaseItem):

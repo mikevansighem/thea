@@ -14,8 +14,10 @@ nav:
   - Contributing: contributing.md
   - Environment:
     - Solar position: not_available.md
-  - Hardware support:
+  - Hardware:
     - MQTT-module: not_available.md
+  - API refrence:
+    - Item stores: api_refrence/item_stores.md
 
 theme:
   name: 'material'

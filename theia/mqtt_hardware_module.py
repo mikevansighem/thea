@@ -7,16 +7,18 @@ import argparse
 import pickle
 import uuid
 import arrow
-import logging_setup
-from exceptions import IgnoreSaved
-from comm_handlers.mqtt_constants import (
+
+from . import logging_setup
+from .exceptions import IgnoreSaved
+from . import logger
+from .comm_handlers.mqtt_constants import (
     MQTT_ADRESS,
     MQTT_PORT,
     MQTT_REQUEST_CONFIG_TOPIC,
     MQTT_SUPPLY_CONFIG_TOPIC,
     MQTT_STATUS_TOPIC,
 )
-from functional_endpoints import (  # noqa: F401
+from .functional_endpoints import (  # noqa: F401
     handler,
     FUNCTIONAL_OUTPUT_SETTERS,
     topicConfig,
@@ -25,9 +27,6 @@ from functional_endpoints import (  # noqa: F401
 SAVED_STATE_FILE_NAME = "state_MQTT_module.pickle"
 AUTOSAVE_INTERVAL = 60 * 5
 STATUS_POST_INTERVAL = 60
-
-# Setup logger
-logger = logging_setup.aux_logger()
 
 
 def on_log_callback(client, userdata, level, buf):
@@ -241,7 +240,7 @@ class MQTTHardwareModule:
         logger.info("Completed configuration of functional endpoints.")
 
 
-def main():
+def cli_mqtt_hw_module():
     """Handles initial argument to start the hardware module."""
 
     parser = argparse.ArgumentParser(
@@ -260,11 +259,11 @@ def main():
     args = parser.parse_args()
 
     # Set verbosity level of logger
-    logging_setup.vebosity(logger, args.verbose)
+    logging_setup.vebosity(args.verbose)
 
     # Initialize and run
     MQTTHardwareModule(args.type, args.ignore_config).run()
 
 
 if __name__ == "__main__":
-    main()
+    cli_mqtt_hw_module()

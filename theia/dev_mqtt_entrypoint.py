@@ -1,11 +1,7 @@
 """Temporary module for developing mqtt comm handler"""
 
 from multiprocessing import Queue
-import comm_handlers
-import logging_setup
-
-logger = logging_setup.aux_logger()
-
+from . import comm_handlers
 
 queue = Queue(10)
 queue.put(("address", "data"))

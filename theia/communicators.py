@@ -1,12 +1,11 @@
 """Module with classes used to communicate with hardware. """
 
-from base_itemstore import BaseItem, BaseStore
-from communicator_types import COMMUNICATOR_TYPES
-from exceptions import CommNotConnectedError
 from multiprocessing import Queue, Process
-import logging_setup
 
-logger = logging_setup.aux_logger()
+from .base_itemstore import BaseItem, BaseStore
+from .communicator_types import COMMUNICATOR_TYPES
+from .exceptions import CommNotConnectedError
+from . import logger
 
 
 class Communicator(BaseItem):

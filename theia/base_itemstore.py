@@ -1,7 +1,9 @@
-from exceptions import NameNotAvailable
+import warnings
 from collections import namedtuple
 from string import Template
-import logging_setup
+
+from .exceptions import NameNotAvailable
+from . import logger
 
 # Type definition for BaseItem, used for tempting and testing only
 BaseType = namedtuple("BaseType", ["default_properties"])
@@ -10,8 +12,6 @@ BASE_TYPES["Empty"] = BaseType(default_properties={})
 
 # Name for creating an item without a specific name
 BASEITEM_NAME_TEMPLATE = Template("$type_$number")
-
-logger = logging_setup.aux_logger()
 
 
 class BaseItem:
@@ -82,6 +82,7 @@ class BaseStore:
     def __init__(self, items=[]):
         """Creates a new instance of this class."""
 
+        # TODO make items private
         self.items = {}
 
         for saveable_item in items:
@@ -90,15 +91,24 @@ class BaseStore:
         logger.debug(f"Created or loaded a {self}.")
 
     def __repr__(self):
+        """Returns representation including number of stored items."""
 
-        return f"An instance of {self.__class__.__name__} with {len(self.as_list())} items.."
+        return f"An instance of {self.__class__.__name__} with {len(self)} items"
+
+    def __len__(self):
+        """Returns the number of items stored."""
+
+        try:
+            len(self.get())
+        except KeyError:
+            return 0
 
     def saveable_state(self) -> dict:
         """Returns a pickable `dict` that can directly be passed into the init method to reinstanciate this object."""
 
         saveable_items = []
 
-        for item in self.as_list():
+        for item in self.get():
             saveable_item = item.saveable_state()
             saveable_items.append(saveable_item)
 
@@ -188,13 +198,33 @@ class BaseStore:
 
         raise KeyError(f"{name} could not be found in {self}.")
 
-    def as_list(self) -> list:
-        """Returns a list of items."""
+    def get(self, type_=None, name=None, single_item=False) -> list:
+        """Returns a list of all items matching the query."""
 
         output_list = []
 
-        for type_group, items in self.items.items():
-            for item in items:
-                output_list.append(item)
+        if type_ is None and name is None:
+            for type_group, items in self.items.items():
+                for item in items:
+                    output_list.append(item)
 
-        return output_list
+        elif type_ is not None and name is None:
+            output_list = self.items.get(type_, [])
+
+        elif name is not None:
+            for type_group, items in self.items.items():
+                for item in items:
+                    if item.name == name and (type_ is None or type_ == type_group):
+                        output_list = [item]
+
+        if len(output_list) == 0:
+            raise KeyError(f"Could not find a match for query.")
+
+        elif single_item is True and len(output_list) == 1:
+            return output_list[0]
+
+        elif single_item is True and len(output_list) != 1:
+            raise warnings.warn("Only returned first item matching your query.")
+
+        else:
+            return output_list

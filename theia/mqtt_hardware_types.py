@@ -1,6 +1,4 @@
-import logging_setup
-
-logger = logging_setup.aux_logger()
+from . import logger
 
 
 class BinaryOut:

@@ -1,5 +1,5 @@
-import thing_updaters
 from collections import namedtuple
+from . import thing_updaters
 
 # Values of the named tuple need to be of type: any, list of types, dict, callable
 ThingType = namedtuple(

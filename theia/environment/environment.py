@@ -1,10 +1,8 @@
 import arrow
 from .default import ENV_SETTINGS, ENV_VARIABLES
-from pretty_printing import pretty_string, pretty_dict
+from ..pretty_printing import pretty_string, pretty_dict
 from . import updaters
-import logging_setup
-
-logger = logging_setup.aux_logger()
+from .. import logger
 
 
 class Environment:

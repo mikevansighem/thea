@@ -1,10 +1,8 @@
-import logging_setup
 from collections import namedtuple
 from queue import Queue
 from threading import Thread
-from mqtt_hardware_types import HARDWARE_TYPES
 
-logger = logging_setup.aux_logger()
+from .mqtt_hardware_types import HARDWARE_TYPES
 
 
 def handler(hardware_type, setter, endpoints, **properties):

@@ -1,7 +1,7 @@
 """Checks communicator type definitions"""
 
-from communicator_types import COMMUNICATOR_TYPES
-from communicator_types import CommunicatorType
+from theia.communicator_types import COMMUNICATOR_TYPES
+from theia.communicator_types import CommunicatorType
 
 
 def test_is_thing_type():
