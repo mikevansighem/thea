@@ -1,6 +1,0 @@
-# Normal requirements.
-
-arrow==0.12.1
-paho-mqtt==1.4.0
-pvlib==0.6.0
-workalendar==3.1.0

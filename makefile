@@ -69,3 +69,8 @@ docs-preview: ## Serves docs locally and opens them in the browser
 docs-build: ## Build documentation
 	pip install -r requirements-docs.txt
 	mkdocs build --verbose --clean --strict
+
+buid:
+	poetry check
+	poetry build
+	poetry publish

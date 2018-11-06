@@ -7,14 +7,7 @@ available via `__all__` can be considered as part of the Theia API.
 # flake8: noqa E402
 
 # Define metadata before logger setup so it can be included in logs.
-__author__ = "Mike van Sighem"
-__email__ = "mikevansighem@gmail.com"
 __version__ = "0.0.1"
-__license__ = "LGPL"
-__status__ = "Development"
-__copyright__ = "Copyright 2018, Mike van Sighem"
-__maintainer__ = "Mike van Sighem"
-__credits__ = ["Mike van Sighem"]
 
 # Setup logger before anything else. Necessary because imported sub-modules
 # import logger from the package level.
