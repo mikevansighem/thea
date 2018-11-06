@@ -32,10 +32,10 @@ matrix:
 
 before_install:
 - pip install poetry
+- pip install tox -e $TOXENV
 
 install:
 - poetry install -v
-- pip install tox-travis
 
 script:
  - tox
