@@ -34,15 +34,12 @@ matrix:
       env: TOXENV=docs
 
 
-before_install:
+install:
 - pip install poetry
 - pip install tox
 
-install:
-- poetry install -v
-
 script:
- - tox
+ - tox -e $TOXENV
 
 jobs:
   include:
