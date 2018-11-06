@@ -3,8 +3,7 @@
 # uploading coverage to Codacy, building documentation,
 # deploying documentation.
 
-# Based on https://github.com/PyCQA/flake8/blob/master/.travis.yml
-# Based on https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
+# https://github.com/twisted/klein/blob/master/.travis.yml
 
 cache: pip
 
@@ -16,23 +15,23 @@ language: python
 
 matrix:
   include:
-    - python: '3.6'
+    - python: 3.6
       env: TOXENV=py36
-    - python: '3.7-dev'
+    - python: 3.7-dev
       env: TOXENV=py37
-    - python: '3.6'
+    - python: 3.6
       env: TOXENV=flake8
-    - python: '3.6'
+    - python: 3.6
       env: TOXENV=coverage
-    - python: '3.6'
+    - python: 3.6
       env: TOXENV=black
-    - python: '3.6'
+    - python: 3.6
       env: TOXENV=docs
 
 
 before_install:
 - pip install poetry
-- pip install tox -e $TOXENV
+- pip install tox
 
 install:
 - poetry install -v
