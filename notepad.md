@@ -22,6 +22,7 @@
 - Read: https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
 - fix tox coverage
 - poetry version command
+- more emoji
 
 ## Notes
 -   timezone according to IANA timezone
