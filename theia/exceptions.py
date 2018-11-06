@@ -1,4 +1,12 @@
 class TheiaException(Exception):
+    """Base Theia exception"""
+
+    pass
+
+
+class NoWorldError(TheiaException):
+    """Raise if no world has been loaded."""
+
     pass
 
 

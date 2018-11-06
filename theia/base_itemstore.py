@@ -98,12 +98,9 @@ class BaseStore:
     def __len__(self):
         """Returns the number of items stored."""
 
-        try:
-            len(self.get())
-        except KeyError:
-            return 0
+        return len(self.get())
 
-    def saveable_state(self) -> dict:
+    def saveable_format(self) -> dict:
         """Returns a pickable `dict` that can directly be passed into the init method to reinstanciate this object."""
 
         saveable_items = []
@@ -201,6 +198,8 @@ class BaseStore:
     def get(self, type_=None, name=None, single_item=False) -> list:
         """Returns a list of all items matching the query."""
 
+        # TODO make options
+
         output_list = []
 
         if type_ is None and name is None:
@@ -217,7 +216,7 @@ class BaseStore:
                     if item.name == name and (type_ is None or type_ == type_group):
                         output_list = [item]
 
-        if len(output_list) == 0:
+        if len(output_list) == 0 and (type_ is not None or name is not None):
             raise KeyError(f"Could not find a match for query.")
 
         elif single_item is True and len(output_list) == 1:

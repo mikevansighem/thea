@@ -8,11 +8,11 @@ from . import logging_setup
 def cli_main():
     """Function to try out common Theia commands."""
 
-    logger.info("top of main")
-
     # Setup new Theia Wrapper
     tw = TheiaWorld()
-    tw.new()
+    tw.new("test world")
+    tw.save("hi")
+    tw.load("hi.tw")
 
     # Add some things
     for i in range(0, 5):
