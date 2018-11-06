@@ -119,3 +119,9 @@ dmypy.json
 # Theia savefiles
 *.pickle
 *.tw
+
+# Auto created and deleted
+setup.py
+
+# Poetry files
+*.lock

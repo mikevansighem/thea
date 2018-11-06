@@ -36,7 +36,7 @@ and rule based control resulting in very predictive behavior. Theia
 breaks with this by controlling the model environment based on real-word
 data and simulation models that introduce an element of randomness.
 
-## ☑️ Principles
+## ✅ Principles
 
 -   Science based environment simulation;
 -   Simple to start but complex if you want to;
@@ -48,15 +48,15 @@ data and simulation models that introduce an element of randomness.
 Currently Theia is in early development so the list of available features
 is a bit short. However we have a lot planned:
 
--   [x] Accelerated model time ⏰
+-   [x] Accelerated model time
 -   [ ] Day and night cycle 🌓
 -   [ ] Hardware control over MQTT
--   [ ] Household lighting 🏡
--   [ ] Weather patterns ⛅️☔⚡️
--   [ ] Traffic 🚗🚕🚌
--   [ ] Opening-hours 🕗
+-   [ ] Household lighting
+-   [ ] Weather patterns 🌀
+-   [ ] Traffic 🚗
+-   [ ] Opening-hours 🕓
 -   [ ] Graphical user interface
--   [ ] Moon and stars 🌜✨
+-   [ ] Moon and stars 🌛✨
 -   [ ] DCC train control 🚂
 -   [ ] Weather sounds 🔉
 
@@ -79,7 +79,7 @@ Refer to the
 [license](https://github.com/mikevansighem/theia/blob/master/docs/LICENSE.md)
 for more details.
 
-## ❤ Contributing 
+## 💛 Contributing 
 
 We are happy to see contributors on the project. Head over to the
 [contributing](https://mikevansighem.github.io/theia/contibuting) section

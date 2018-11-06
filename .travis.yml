@@ -3,18 +3,29 @@
 # uploading coverage to Codacy, building documentation,
 # deploying documentation.
 
+# Based on https://github.com/PyCQA/flake8/blob/master/.travis.yml
+# Based on https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
+
+cache: pip
+
 os:
  - linux
  #- osx
 
 language: python
-
 python:
- - '3.6'
- - '3.7-dev'
+  - "3.6"
+  - "3.7"
+
+before_install:
+- pip install poetry
+
+install:
+- poetry install -v
+- pip install tox-travis
 
 script:
- - make setup-and-check
+ - tox
 
 jobs:
   include:
@@ -33,5 +44,5 @@ notifications:
   email:
     recipients:
       - mikevansighem@gmail.com
-    on_success: never
+    on_success: change
     on_failure: always
