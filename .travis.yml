@@ -33,16 +33,16 @@ jobs:
       env: TOXENV=black
     - python: "3.6"
       env: TOXENV=docs
-    stage: Build and deploy docs
-    script: make docs-build
-    deploy:
-      provider: pages
-      skip-cleanup: true
-      github-token: $GITHUB_TOKEN
-      keep-history: true
-      local_dir: site
-      on:
-        branch: master
+    - stage: Build and deploy docs
+      script: make docs-build
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep-history: true
+        local_dir: site
+        on:
+          branch: master
 
 notifications:
   email:
