@@ -33,9 +33,11 @@ jobs:
       env: TOXENV=docs
 
     - stage: Deploy docs
+      install:
+        - pip install poetry
       script:
         - poetry install -v --extras "docs"
-        - mkdocs build --verbose --clean --strict
+        - poetry run mkdocs build --verbose --clean --strict
       deploy:
         provider: pages
         skip-cleanup: true
