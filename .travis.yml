@@ -16,7 +16,6 @@ install:
   - pip install tox
 
 script:
-  - env $TOXENV
   - tox -e $TOXENV
 
 jobs:
