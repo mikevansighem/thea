@@ -35,6 +35,7 @@ jobs:
       env: TOXENV=mypy
 
     - stage: Deploy docs
+      python: 3.6
       install:
         - pip install poetry
       script:
