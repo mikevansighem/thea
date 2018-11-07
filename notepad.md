@@ -8,19 +8,13 @@
 -   Disable logging from other modules
 
 ## Release as PyPi package
--   [ ] Test on OSX
 -   [ ] Version tags
 -   [ ] Build exe file
--   [ ] Allow failure mypi
 -   [ ] add simple check if main runs
 -   [ ] https://github.com/tox-dev/tox/blob/master/tox.ini
 
 ### Notes on release PyPi
--   update with https://stackoverflow.com/questions/39341486/how-to-prevent-travis-from-deploying-twice
--   Better makefile (see cookiecutter and cards)
--   https://github.com/PyCQA/flake8/blob/master/.appveyor.yml
 - Read: https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
-- fix deploy docs
 - poetry version command
 
 ## Notes

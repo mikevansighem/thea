@@ -35,7 +35,6 @@ install:
   - cmd: python -m pip install --upgrade pip
 
   # Install tox an poetry
-  - cmd: pip install poetry
   - cmd: pip install tox
 
 test_script:
