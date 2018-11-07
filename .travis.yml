@@ -16,7 +16,6 @@ language: python
 python:
   - "3.6"
   - "3.7-dev"
-  - "3.8-dev"
 
 matrix:
   include:
@@ -35,11 +34,12 @@ matrix:
 
 
 install:
-- pip install poetry
-- pip install tox
+  - pip install poetry
+  - pip install tox
 
 script:
- - tox -e $TOXENV
+  - env $TOXENV
+  - tox -e $TOXENV
 
 jobs:
   include:

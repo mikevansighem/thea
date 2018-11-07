@@ -3,61 +3,43 @@
 # uploading coverage to Codacy, building documentation,
 # deploying documentation.
 
-# Based on: https://github.com/cloudify-cosmo/appveyor-utils/blob/master/appveyor.yml
+image:
+- Visual Studio 2017
+
+build: false
 
 environment:
-  # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
-  # /E:ON and /V:ON options are not enabled in the batch script intepreter
-  # See: http://stackoverflow.com/a/13751649/163740
-  CMD_IN_ENV: "cmd /E:ON /V:ON /C .\\appveyor\\run_with_env.cmd"
 
   matrix:
     - PYTHON: "C:\\Python3.6"
-      PYTHON_VERSION: "3.6"
-      PYTHON_ARCH: "32"
       TOX_ENV: "py36"
 
     - PYTHON: "C:\\Python3.6-x64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_ARCH: "64"
       TOX_ENV: "py36"
 
     - PYTHON: "C:\\Python3.7"
-      PYTHON_VERSION: "3.7"
-      PYTHON_ARCH: "32"
       TOX_ENV: "py37"
 
     - PYTHON: "C:\\Python3.7-x64"
-      PYTHON_VERSION: "3.7"
-      PYTHON_ARCH: "64"
       TOX_ENV: "py37"
 
 install:
-  # Download setup scripts and unzip
-  - ps: "wget https://github.com/cloudify-cosmo/appveyor-utils/archive/master.zip -OutFile ./master.zip"
-  - "7z e master.zip */appveyor/* -oappveyor"
 
-  # Install Python (from the official .msi of http://python.org) and pip when
-  # not already installed.
-  - "powershell ./appveyor/install.ps1"
+  # Perpend python to PATH
+  - cmd: set PATH=%PYTHON%\Scripts;%PYTHON%;%PATH%
+  # Check that we have the expected version of Python
+  - cmd: python --version
 
-  # Prepend newly installed Python to the PATH of this build (this cannot be
-  # done from inside the powershell script as it would require to restart
-  # the parent CMD process).
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  # Upgrade to the latest version of pip to avoid it displaying warnings
+  # about it being out of date.
+  - cmd: python -m pip install --upgrade pip
 
-  # Check that we have the expected version and architecture for Python
-  - "python --version"
-  - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
-
-build: false  # Not a C# project, build stuff at the test step instead.
-
-before_test:
-  - "%CMD_IN_ENV% pip install poetry"
-  - "%CMD_IN_ENV% pip install tox"
+  # Install tox an poetry
+  - cmd: pip install poetry
+  - cmd: pip install tox
 
 test_script:
-  - "%CMD_IN_ENV% tox -e %TOX_ENV%"
+  - cmd: tox -e %TOX_ENV%"
 
 notifications:
   - provider: Email
