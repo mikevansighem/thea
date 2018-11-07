@@ -14,7 +14,6 @@
 -   [ ] Allow failure mypi
 -   [ ] add simple check if main runs
 -   [ ] https://github.com/tox-dev/tox/blob/master/tox.ini
--   [ ] add support https://codecov.io/gh/tox-dev/tox/pull/954?src=pr&el=h1
 
 ### Notes on release PyPi
 -   update with https://stackoverflow.com/questions/39341486/how-to-prevent-travis-from-deploying-twice
