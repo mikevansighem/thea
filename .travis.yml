@@ -9,8 +9,6 @@ os:
  - linux
  - osx
 
-language: python
-
 install:
   - pip install tox
 
