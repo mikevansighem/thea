@@ -3,8 +3,6 @@
 # uploading coverage to Codacy, building documentation,
 # deploying documentation.
 
-# https://github.com/twisted/klein/blob/master/.travis.yml
-
 cache: pip
 
 os:
@@ -17,7 +15,20 @@ python:
   - "3.6"
   - "3.7-dev"
 
-matrix:
+jobs:
+  include:
+
+
+
+install:
+  - pip install poetry
+  - pip install tox
+
+script:
+  - env $TOXENV
+  - tox -e $TOXENV
+
+jobs:
   include:
     - python: "3.6"
       env: TOXENV=py36
@@ -31,19 +42,7 @@ matrix:
       env: TOXENV=black
     - python: "3.6"
       env: TOXENV=docs
-
-
-install:
-  - pip install poetry
-  - pip install tox
-
-script:
-  - env $TOXENV
-  - tox -e $TOXENV
-
-jobs:
-  include:
-    stage: build and deploy docs
+    stage: Build and deploy docs
     script: make docs-build
     deploy:
       provider: pages
