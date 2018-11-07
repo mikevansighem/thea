@@ -7,7 +7,7 @@ cache: pip
 
 os:
  - linux
- #- osx
+ - osx
 
 language: python
 
