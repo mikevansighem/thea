@@ -9,6 +9,7 @@ omit =
     */Python?.?/*
     *__init__*
     *test*.py
+    *.tox/*
 
 exclude_lines =
     if __name__ == .__main__.:

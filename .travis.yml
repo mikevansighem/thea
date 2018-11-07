@@ -33,7 +33,7 @@ jobs:
     - python: "3.6"
       env: TOXENV=docs
     - stage: Build and deploy docs
-      script: make docs-build
+      script: mkdocs build --verbose --clean --strict
       deploy:
         provider: pages
         skip-cleanup: true

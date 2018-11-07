@@ -11,6 +11,7 @@
 -   [ ] Test on OSX
 -   [ ] Version tags
 -   [ ] Build exe file
+-   [ ] Allow failure mypi
 -   [ ] add simple check if main runs
 -   [ ] https://github.com/tox-dev/tox/blob/master/tox.ini
 -   [ ] add support https://codecov.io/gh/tox-dev/tox/pull/954?src=pr&el=h1
@@ -21,8 +22,8 @@
 -   https://github.com/PyCQA/flake8/blob/master/.appveyor.yml
 - Read: https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
 - fix tox coverage
+- fix deploy docs
 - poetry version command
-- more emoji
 
 ## Notes
 -   timezone according to IANA timezone
