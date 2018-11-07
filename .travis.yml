@@ -5,9 +5,9 @@
 
 cache: pip
 
-os:
- - linux
- - osx
+os: linux
+
+language: python
 
 install:
   - pip install tox
@@ -17,6 +17,8 @@ script:
 
 jobs:
   include:
+
+    # Testing on linux
     - python: "3.6"
       env: TOXENV=py36
       os: linux
@@ -24,6 +26,7 @@ jobs:
       env: TOXENV=py37
       os: linux
 
+    # Testing on osx
     - python: "3.6"
       env: TOXENV=py36
       os: osx
@@ -31,6 +34,7 @@ jobs:
       env: TOXENV=py37
       os: osx
 
+    # Formatting and docs tests
     - python: "3.6"
       env: TOXENV=flake8
     - python: "3.6"
@@ -42,6 +46,7 @@ jobs:
     - python: "3.6"
       env: TOXENV=mypy
 
+    # Documentation deployment
     - stage: Deploy docs
       python: 3.6
       install:
