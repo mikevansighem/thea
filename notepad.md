@@ -21,7 +21,6 @@
 -   Better makefile (see cookiecutter and cards)
 -   https://github.com/PyCQA/flake8/blob/master/.appveyor.yml
 - Read: https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
-- fix tox coverage
 - fix deploy docs
 - poetry version command
 
