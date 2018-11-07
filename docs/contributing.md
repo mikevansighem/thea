@@ -92,6 +92,7 @@ underneath to see which emoji is appropriate for your commit.
 | :card_index: 				| Metadata                   	| `:card_index:`		    |
 | :bookmark:				| Releasing or version tags  	| `:bookmark:`			    |
 | :construction_worker:     | Continuous integration stuff  | `:construction_worker:`   |
+| :package:                 | Packaging stuff               | `:package:`               |
 | :rocket:					| Deploying stuff            	| `:rocket:`				|
 | :twisted_rightwards_arrows:| Merging branches         | `:twisted_rightwards_arrows:` |
 | :rewind:					| Reverting changes          	| `:rewind:`			    |
