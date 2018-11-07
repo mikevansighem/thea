@@ -18,7 +18,7 @@ script:
   - tox -e $TOXENV
 
 jobs:
-  allow_failure:
+  allow_failures:
     - python: "3.6"
       env: TOXENV=mypy
 
