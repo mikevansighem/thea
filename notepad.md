@@ -12,7 +12,8 @@
 -   [ ] Build exe file
 -   [ ] add simple check if main runs
 -   [ ] https://github.com/tox-dev/tox/blob/master/tox.ini
-
+-   [ ] Tox for deployment
+ 
 ### Notes on release PyPi
 - Read: https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
 - poetry version command
