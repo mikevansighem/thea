@@ -12,13 +12,16 @@ os:
 language: python
 
 install:
-  - pip install poetry
   - pip install tox
 
 script:
   - tox -e $TOXENV
 
 jobs:
+  allow_failure:
+    - python: "3.6"
+      env: TOXENV=mypy
+
   include:
     - python: "3.6"
       env: TOXENV=py36
@@ -32,8 +35,11 @@ jobs:
       env: TOXENV=black
     - python: "3.6"
       env: TOXENV=docs
-    - stage: Build and deploy docs
-      script: mkdocs build --verbose --clean --strict
+
+    - stage: Deploy docs
+      script:
+        - poetry install -v --extras "docs"
+        - mkdocs build --verbose --clean --strict
       deploy:
         provider: pages
         skip-cleanup: true

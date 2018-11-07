@@ -6,17 +6,9 @@
 
 help: ## Print a help message with the defined commands
 	$(info run: starts the main application.)
-	$(info setup: runs setup.)
 	$(info precommit-install: installs pre-commit hooks.)
 	$(info precommit-update: updates versions of pre-commit hooks.)
 	$(info commit-dirty: adds commits and pushed without any precommit hooks.)
-	$(info format: formats code.)
-	$(info check-code Runs all tests.)
-	$(info check-format Checks code formatting.)
-	$(info setup-and-check: runs setup and checks.)
-	$(info docs-show: shows live documentation.")
-	$(info docs-preview: shows documentation preview.)
-	$(info docs-build: builds deocumentation.)
 	# $(info clean: remove all build, test, coverage and Python artifacts.)
 
 run: ## Starts the main application
@@ -36,18 +28,9 @@ commit-dirty: ## Add, commit (while ignoring pre-commit hook) and push with a si
 	git commit -m "$(M)" --no-verify
 	git push
 
-docs-show: ## Opens live documentation
-	CMD /C start https://mikevansighem.github.io/theia/
-
-docs-preview: ## Serves docs locally and opens them in the browser
-	CMD /C start http://127.0.0.1:8000
-	mkdocs serve
-
-
 buid:
 	poetry check
 	poetry build
 	poetry publish
 
-	poetry install --extras "mysql pgsql"
 	poetry install --no-dev
