@@ -1,23 +1,23 @@
 # ❤ Contributing
 
-Found a bug? Have a good idea for improving Theia? Head over to Theia's 
-Github page and create and submit a new issues/feature request. Want 
+Found a bug? Have a good idea for improving Thea? Head over to Thea's
+Github page and create and submit a new issues/feature request. Want
 to contribute your code? Go to the [contributing code](https://mikevansighem
-.github.io/theia/contributing/#contributing-code) section and submit a 
+.github.io/thea/contributing/#contributing-code) section and submit a
 pull-request.
 
 ## Feature request or bug report
 
-Found a bug or have a feature request go to our 
-[issue-tracker](https://github.com/mikevansighem/theia/issues) and report
+Found a bug or have a feature request go to our
+[issue-tracker](https://github.com/mikevansighem/thea/issues) and report
 it using the appropriate template.
 
 ## Writing documentation
 
 Want to contribute to our documentation? Your a real hero! 🎉
-Our documentation is all written in Markdown and build by 
-[MkDocs](https://www.mkdocs.org/) To add pages to our documentation place 
-your new markdown file in `\docs` and add the page in the `nav` section 
+Our documentation is all written in Markdown and build by
+[MkDocs](https://www.mkdocs.org/) To add pages to our documentation place
+your new markdown file in `\docs` and add the page in the `nav` section
 of `.mkdocs.yml`. Have you added any images, place these in `\docs\images`.
 To preview the changes navigate to the root of the repository and run:
 
@@ -31,35 +31,35 @@ mkdocs serve
 
 ## Contributing code
 
-Want to contribute your coding skills? Head over tot our 
-[issue-tracker](https://github.com/mikevansighem/theia/issues) and
+Want to contribute your coding skills? Head over tot our
+[issue-tracker](https://github.com/mikevansighem/thea/issues) and
 look for an issue/feature you like to work on. All-ready have your code written?
 No need to file an issue first immediately create an pull-request.
 
 ### Pull-request process
 
-Once you create a pull-request your code code will be checked by our 
-CI system. To find out which checks are being run head over to the 
-[testing](https://mikevansighem.github.io/theia/testing_and_ci/) page. 
-If all the checks pass one of the core-contributers will accept you 
+Once you create a pull-request your code code will be checked by our
+CI system. To find out which checks are being run head over to the
+[testing](https://mikevansighem.github.io/thea/testing_and_ci/) page.
+If all the checks pass one of the core-contributers will accept you
 pull-request and merge it with the master branch to be deployed.
 
 ### Code style
 
-The code style we use is ["Black"](https://github.com/ambv/black), but 
-don't worry about that to much as long as you have the provided 
-[pre-commit hooks](https://mikevansighem.github.io/theia/testing_and
-_ci/#pre-commit-hooks) installed there is nothing for you to do. Black 
+The code style we use is ["Black"](https://github.com/ambv/black), but
+don't worry about that to much as long as you have the provided
+[pre-commit hooks](https://mikevansighem.github.io/thea/testing_and
+_ci/#pre-commit-hooks) installed there is nothing for you to do. Black
 takes over the minutiae of hand-formatting. One thing Black cannot solve
-is your variable naming. Please keep these according to 
-[PEP-8](https://www.python.org/dev/peps/pep-0008/). 
+is your variable naming. Please keep these according to
+[PEP-8](https://www.python.org/dev/peps/pep-0008/).
 
 ### Commit messages
 
-Inspired by [Gitmoji](https://gitmoji.carloscuesta.me/) we like all our 
-commit messages to be preceded by an emoji. Using emoji on commit 
-messages provides an easy way of identifying the purpose or intention 
-of a commit with only looking at the emoji used. Refer to the table 
+Inspired by [Gitmoji](https://gitmoji.carloscuesta.me/) we like all our
+commit messages to be preceded by an emoji. Using emoji on commit
+messages provides an easy way of identifying the purpose or intention
+of a commit with only looking at the emoji used. Refer to the table
 underneath to see which emoji is appropriate for your commit.
 
 | Emoji               		| Commit type                   | Code               	    |

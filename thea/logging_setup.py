@@ -5,7 +5,7 @@ import logging
 import arrow
 from logging.config import fileConfig
 
-from . import __version__
+# from . import __version__
 
 # Make log config relative to module
 LOGGING_CONFIG_LOCATION = "logging.ini"
@@ -15,7 +15,7 @@ LOGS_DIRECTORY = "logs"
 def main_logger():
     """Sets-up main logger from configuration file."""
 
-    log_name = f"theia_log_{arrow.utcnow().format('YYYYMMDD_HHmm')}"
+    log_name = f"thea_log_{arrow.utcnow().format('YYYYMMDD_HHmm')}"
 
     try:
         logs_dir = os.path.join(os.path.dirname(__file__), LOGS_DIRECTORY)
@@ -37,7 +37,7 @@ def main_logger():
     else:
         logger = logging.getLogger(__name__)
         logger.info(f"Setup root logger to save to: '{log_file}'.")
-        logger.info(f"Using Theia version: '{__version__}'.")
+        # logger.info(f"Using Thea version: '{__version__}'.")
 
     return logger
 

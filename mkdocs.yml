@@ -1,10 +1,10 @@
-site_name: 'Theia'
-site_description: 'Documentation for Theia.'
+site_name: 'Thea'
+site_description: 'Documentation for Thea.'
 site_author: 'Mike van Sighem'
-site_url: 'https://mikevansighem.github.io/theia/'
+site_url: 'https://mikevansighem.github.io/thea/'
 copyright: 'Copyright 2018 - Mike van Sighem'
-repo_name: 'mikevansighem/theia'
-repo_url: 'https://github.com/mikevansighem/theia'
+repo_name: 'mikevansighem/thea'
+repo_url: 'https://github.com/mikevansighem/thea'
 
 nav:
   - Home: index.md
@@ -22,7 +22,7 @@ nav:
 theme:
   name: 'material'
   favicon: 'images/favicon.ico'
-  logo: 'images/theia_icon.svg'
+  logo: 'images/thea_icon.svg'
   language: 'en'
 
   palette:

@@ -4,7 +4,7 @@
 -   Environment factory with location presets.
 -   Lunar: face https://pylunar.readthedocs.io/en/latest/usage.html
 -   Handle warnings in logging
--   Main calls CLI, CLI maps directly to calls to Theia world and its stores
+-   Main calls CLI, CLI maps directly to calls to Thea world and its stores
 -   Disable logging from other modules
 
 ## Release as PyPi package
@@ -13,7 +13,7 @@
 -   [ ] add simple check if main runs
 -   [ ] https://github.com/tox-dev/tox/blob/master/tox.ini
 -   [ ] Tox for deployment
- 
+
 ### Notes on release PyPi
 - Read: https://wrongsideofmemphis.wordpress.com/2018/10/28/package-and-deploy-a-python-module-in-pypi-with-poetry-tox-and-travis/
 - poetry version command

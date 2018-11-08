@@ -72,8 +72,38 @@ jobs:
     - python: "3.6"
       env: TOXENV=mypy
 
+    # Build artifacts for deployment
+    - stage: build for deployment
+      install:
+        - pip install poetry
+      script:
+        - poetry install -v
+        - poetry build
+        on:
+          tags: true
+
+    # Publish on PyPi
+    - stage: Publish on PyPi
+      deploy:
+        skip_cleanup: true
+        provider: pypi
+        user: mikevansighem
+        password: $PYPI_PASSWORD
+        on:
+          tags: true
+
+    # Publish on github releases
+    - stage: Publish on Github releases
+      deploy:
+        skip_cleanup: true
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file: "FILE TO UPLOAD"
+        on:
+          tags: true
+
     # Documentation deployment
-    - stage: Deploy docs
+    - stage: deploy docs
       python: 3.6
       install:
         - pip install poetry

@@ -2,9 +2,9 @@
 To help us find errors we have a number of tests and checks. Which we can 
 run locally but will also run on our continuous integration (CI) system.
 For any of the commands in this section to work we assume you have installed
-Theia according to the 
+Thea according to the 
 [developer installation](https://mikevansighem
-.github.io/theia/getting_started/#developer-installation) 
+.github.io/thea/getting_started/#developer-installation) 
 instructions.
 
 ## Code testing
@@ -74,8 +74,8 @@ pre-commit run --all-files
 To ease the load on our developers we have set up an extensive continuous 
 integration (CI) system. It takes care of building, testing and deployment 
 of code and the documentation. To enable multi-platform testing we had to 
-use both [Travis-CI](https://travis-ci.com/mikevansighem/theia) and 
-[AppVeyor](https://ci.appveyor.com/project/mikevansighem/theia/branch/master) 
+use both [Travis-CI](https://travis-ci.com/mikevansighem/thea) and 
+[AppVeyor](https://ci.appveyor.com/project/mikevansighem/thea/branch/master) 
 To see which service is used to perform what tasks refer to the table below. 
 
 |							| Travis-CI				| AppVeyor				|
@@ -95,6 +95,6 @@ To see which service is used to perform what tasks refer to the table below.
     Type checking using myp and deploying to PyPi are not implemented yet.
 
 To help improve the quality of our code further it is analyzed by 
-[Codacy](https://app.codacy.com/project/mikevansighem/theia/dashboard) 
+[Codacy](https://app.codacy.com/project/mikevansighem/thea/dashboard) 
 which displays linting, security, formatting and coverage results 
 in a easy to use interface.

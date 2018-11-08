@@ -22,7 +22,7 @@ from .mosquitto_broker import start_mqtt_broker, stop_mqtt_broker, broker_status
 from .. import logger
 
 # Create random client name
-MQTT_CLIENT_NAME = f"theia_mainapp_{randint(0, 100000000):08d}"
+MQTT_CLIENT_NAME = f"thea_mainapp_{randint(0, 100000000):08d}"
 
 
 def on_connect():

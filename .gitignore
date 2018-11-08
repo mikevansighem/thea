@@ -116,7 +116,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Theia savefiles
+# Thea savefiles
 *.pickle
 *.tw
 
