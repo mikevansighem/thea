@@ -7,6 +7,8 @@
 -   Main calls CLI, CLI maps directly to calls to Thea world and its stores
 -   Disable logging from other modules
 -   bugbear
+-   make local coverage pass without codacy
+-   More emoji in readme
 
 ## Release as PyPi package
 -   [ ] Version tags

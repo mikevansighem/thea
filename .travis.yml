@@ -72,6 +72,8 @@ jobs:
       env: TOXENV=flake8
     - python: "3.6"
       env: TOXENV=coverage
+      after_test:
+        - python-codacy-coverage -r coverage.xml
     - python: "3.6"
       env: TOXENV=black
     - python: "3.6"
