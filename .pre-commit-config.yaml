@@ -14,7 +14,8 @@ repos:
     rev: v2.0.0
     hooks:
     - id: flake8
-      additional_dependencies: [pep8-naming, flake8-docstrings]
+      additional_dependencies: [pep8-naming, flake8-docstrings, flake8-import-order] #, flake8-bugbear
+      args: ['--config=tox.ini']
     - id: requirements-txt-fixer
     - id: check-added-large-files
     - id: detect-private-key

@@ -3,70 +3,48 @@
 # uploading coverage to Codacy, building documentation,
 # deploying documentation.
 
-build: off
-deploy: off
-
 image:
 - Visual Studio 2017
+
+build: false
 
 environment:
 
   matrix:
-    - PYTHON: "C:\\Python36-x64"
-      EPHEMWHEEL: "ephem-3.7.6.1-cp36-cp36m-win_amd64.whl"
-      EPHEMWHEEL_URL: "https://www.dropbox.com/sh/pjh8lf1sf3p5x2l/AAAEQov0ZWCCPC3l0SSSRr7Ra/ephem-3.7.6.1-cp36-cp36m-win_amd64.whl?dl=1"
+    - PYTHON: "C:\\Python3.6"
+      TOX_ENV: "py36"
 
-    - PYTHON: "C:\\Python36"
-      EPHEMWHEEL: "ephem-3.7.6.1-cp36-cp36m-win32.whl"
-      EPHEMWHEEL_URL: "https://www.dropbox.com/sh/pjh8lf1sf3p5x2l/AABMh1WoGW13OTV30oxQUMxIa/ephem-3.7.6.1-cp36-cp36m-win32.whl?dl=1"
+    - PYTHON: "C:\\Python3.6-x64"
+      TOX_ENV: "py36"
 
-    - PYTHON: "C:\\Python37-x64"
-      EPHEMWHEEL: "ephem-3.7.6.1-cp37-cp37m-win_amd64.whl"
-      EPHEMWHEEL_URL: "https://www.dropbox.com/sh/pjh8lf1sf3p5x2l/AAC4z3rZugvg6oPVAzankny9a/ephem-3.7.6.1-cp37-cp37m-win_amd64.whl?dl=1"
+    - PYTHON: "C:\\Python3.7"
+      TOX_ENV: "py37"
 
-    - PYTHON: "C:\\Python37"
-      EPHEMWHEEL: "ephem-3.7.6.1-cp37-cp37m-win32.whl"
-      EPHEMWHEEL_URL: "https://www.dropbox.com/sh/pjh8lf1sf3p5x2l/AADG_MAxvduEgs956CwuzJoca/ephem-3.7.6.1-cp37-cp37m-win32.whl?dl=1"
+    - PYTHON: "C:\\Python3.7-x64"
+      TOX_ENV: "py37"
 
 install:
 
-  # Install make and add to PATH
-  - choco install make
-  - choco upgrade make
-
-  # Download ephem unofficial windows binary from Dropbox
-  - ps: echo $env:EPHEMWHEEL_URL
-  - ps: echo $env:EPHEMWHEEL
-  - ps: Invoke-WebRequest -Uri $env:EPHEMWHEEL_URL -OutFile $env:EPHEMWHEEL
-
   # Perpend python to PATH
   - cmd: set PATH=%PYTHON%\Scripts;%PYTHON%;%PATH%
-
   # Check that we have the expected version of Python
   - cmd: python --version
-
-  # Check we are in the cloned repository
-  - cmd: dir
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
   - cmd: python -m pip install --upgrade pip
 
-  # Setup ephem
-  - cmd: pip install %EPHEMWHEEL%
-
-  # Run setup from makefile
-  - cmd: make setup
+  # Install tox an poetry
+  - cmd: pip install tox
 
 test_script:
-  # Run checks from makefile
-  - cmd: make check-code
+  - cmd: tox -e %TOX_ENV%"
 
 notifications:
   - provider: Email
     to:
     - mikevansighem@gmail.com
-    subject: Theia build failed
+    subject: Thea build failed
     on_build_success: false
     on_build_failure: true
-    on_build_status_changed: false
+    on_build_status_changed: true

@@ -115,3 +115,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Thea savefiles
+*.pickle
+*.tw
+
+# Auto created and deleted
+setup.py
+
+# Poetry files
+*.lock

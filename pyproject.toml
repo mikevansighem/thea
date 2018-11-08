@@ -1,5 +1,69 @@
-# Retrieved from: https://github.com/ambv/black/blob/master/pyproject.toml
+# Retrieved from https://github.com/sdispater/poetry
+[tool.poetry]
+name = "thea"
+version = "0.0.1"
+description = "Thea is used to control the lighting of model(-train) layouts based on simulations and real world data."
+license = "LGPL-3.0+"
+authors = ["Mike van Sighem <mikevansighem@gmail.com>"]
+readme = 'README.md'
+repository = "https://github.com/mikevansighem/thea/"
+homepage = "https://mikevansighem.github.io/thea/"
+documentation = "https://mikevansighem.github.io/thea/"
+keywords = ['lighting', 'modeling', 'mqtt', 'simulation', 'model-trains']
+classifiers = [
+"Development Status :: 2 - Pre-Alpha",
+"Intended Audience :: End Users/Desktop",
+"Natural Language :: English",
+"Programming Language :: Python :: 3 :: Only",
+]
 
+[tool.poetry.dependencies]
+# Compatible python versions
+python = "^3.6"
+
+# Normal dependencies
+arrow="^0"
+paho-mqtt="^1"
+pvlib="^0"
+
+# Optional/extra dependencies for docs
+mkdocs = {version = "^1", optional = true}
+mkdocs-material = {version = "^3", optional = true}
+pygments = {version = "^2", optional = true}
+pymdown-extensions = {version = "^6", optional = true}
+
+
+[tool.poetry.dev-dependencies]
+codacy-coverage = "^1"
+coverage ="^4"
+black = "^18"
+flake8= "^3"
+#flake8-bugbear= "^18.6"
+flake8-docstrings= "^1"
+flake8-import-order= "^0"
+mypy= "^0"
+pep8-naming= "^0"
+pre-commit= "^1"
+pytest= "^3"
+pytest-cov= "^2"
+
+
+# Defines extras
+[tool.poetry.extras]
+docs = ["mkdocs","mkdocs-material", "pygments", "pymdown-extensions "]
+
+
+[tool.poetry.scripts]
+my-script = 'thea:__main__'
+
+
+# Specifies tools for building
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+
+# Retrieved from: https://github.com/ambv/black/blob/master/pyproject.toml
 [tool.black]
 line-length = 88
 py36 = true
