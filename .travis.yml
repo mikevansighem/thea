@@ -49,6 +49,9 @@ jobs:
     - python: "3.7-dev"
       env: TOXENV=py37
       os: linux
+    - python: "3.8-dev"
+      env: TOXENV=py38
+      os: linux
 
     # Testing on osx, see: https://pythonhosted.org/CodeChat/.travis.yml.html
     - language: generic
@@ -58,6 +61,10 @@ jobs:
     - language: generic
       env: PYTHON=3.7
       env: TOXENV=py37
+      os: osx
+    - language: generic
+      env: PYTHON=3.8
+      env: TOXENV=py38
       os: osx
 
     # Formatting and docs tests
@@ -72,21 +79,16 @@ jobs:
     - python: "3.6"
       env: TOXENV=mypy
 
-    # Build artifacts for deployment
-    - stage: build for deployment
+
+    # Publish on PyPi
+    - stage: publish on PyPi
       python: 3.6
       install:
         - pip install poetry
       script:
         - poetry install -v
         - poetry build
-      on:
-        tags: true
-
-    # Publish on PyPi
-    - stage: Publish on PyPi
       deploy:
-        skip_cleanup: true
         provider: pypi
         user: mikevansighem
         password: $PYPI_PASSWORD
@@ -108,10 +110,11 @@ jobs:
         keep-history: true
         local_dir: site
         on:
-          branch: master
+          tags: true
 
   allow_failures:
     - env: TOXENV=mypy
+    - env: TOXENV=py38
     - os: osx
 
 notifications:

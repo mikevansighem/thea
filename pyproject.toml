@@ -10,7 +10,12 @@ repository = "https://github.com/mikevansighem/thea/"
 homepage = "https://mikevansighem.github.io/thea/"
 documentation = "https://mikevansighem.github.io/thea/"
 keywords = ['lighting', 'modeling', 'mqtt', 'simulation', 'model-trains']
-
+classifiers = [
+"Development Status :: 2 - Pre-Alpha",
+"Intended Audience :: End Users/Desktop",
+"Natural Language :: English",
+"Programming Language :: Python :: 3 :: Only",
+]
 
 [tool.poetry.dependencies]
 # Compatible python versions
@@ -33,6 +38,7 @@ codacy-coverage = "^1"
 coverage ="^4"
 black = "^18"
 flake8= "^3"
+flake8-bugbear= "^18"
 flake8-docstrings= "^1"
 flake8-import-order= "^0"
 mypy= "^0"

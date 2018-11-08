@@ -6,8 +6,13 @@ available via `__all__` can be considered as part of the Thea API.
 
 # flake8: noqa E402
 
-# Define metadata before logger setup so it can be included in logs.
-# __version__ = "0.0.1"
+# Get metadata before logger setup so it can be included in logs.
+import pkg_resources
+
+try:
+    __version__ = pkg_resources.get_distribution(__package__).version
+except pkg_resources.DistributionNotFound:
+    __version__ = 'dev'
 
 # Setup logger before anything else. Necessary because imported sub-modules
 # import logger from the package level.
