@@ -6,6 +6,7 @@
 -   Handle warnings in logging
 -   Main calls CLI, CLI maps directly to calls to Thea world and its stores
 -   Disable logging from other modules
+-   bugbear
 
 ## Release as PyPi package
 -   [ ] Version tags

@@ -12,7 +12,7 @@ import pkg_resources
 try:
     __version__ = pkg_resources.get_distribution(__package__).version
 except pkg_resources.DistributionNotFound:
-    __version__ = 'dev'
+    __version__ = "dev"
 
 # Setup logger before anything else. Necessary because imported sub-modules
 # import logger from the package level.
