@@ -1,6 +1,6 @@
 """Starts command line interface."""
 
-import theia
+import thea
 
 if __name__ == "__main__":
-    theia.cli_app()
+    thea.cli_app()

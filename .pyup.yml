@@ -11,11 +11,7 @@ assignees:
   - mikevansighem
 
 requirements:
-  - requirements.txt:
-      update: all
-  - requirements-dev.txt:
-      update: all
-  - requirements-docs.txt:
+  - pyproject.toml:
       update: all
 
 pr_prefix: ":arrow_up: "

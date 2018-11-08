@@ -12,7 +12,7 @@ __all__ = [
     "workday",
     "holiday",
     "solar_position",
-    "stacked_linear_model",
+    "StackedLinearModel",
     "datetime",
     "angle_to_winddirection",
     "clearsky_irradiance",

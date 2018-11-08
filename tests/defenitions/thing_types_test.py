@@ -1,7 +1,7 @@
 """Checks thing type definitions"""
 
-from theia.thing_types import THING_TYPES
-from theia.thing_types import ThingType
+from thea.thing_types import THING_TYPES
+from thea.thing_types import ThingType
 
 
 def test_is_thing_type():

@@ -6,7 +6,7 @@ about: Report a problem you found.
 
 **What version are you running?**
 
--   Theia version: 
+-   Thea version: 
 -   Python version: 
 -   Operating system:
 

@@ -1,15 +1,15 @@
 import argparse
 
-from .theia_world import TheiaWorld
+from .thea_world import TheaWorld
 from . import logger
 from . import logging_setup
 
 
 def cli_main():
-    """Function to try out common Theia commands."""
+    """Function to try out common Thea commands."""
 
-    # Setup new Theia Wrapper
-    tw = TheiaWorld()
+    # Setup new Thea Wrapper
+    tw = TheaWorld()
     tw.new("test world")
     tw.save("hi")
     tw.load("hi.tw")
@@ -40,9 +40,9 @@ def cli_main():
 def cli_app():
     """Handles initial argument to start main."""
 
-    logger.info("Started the Theia command-line application.")
+    logger.info("Started the Thea command-line application.")
 
-    parser = argparse.ArgumentParser(description="Start Theia.")
+    parser = argparse.ArgumentParser(description="Start Thea.")
     parser.add_argument(
         "-v", "--verbose", help="Verbose printing.", action="store_true"
     )
