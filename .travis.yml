@@ -82,22 +82,16 @@ jobs:
       env: TOXENV=mypy
 
 
-    # Publish on PyPi
-    - stage: publish on PyPi
+    # Publish on PyPi if there is a tag
+    - stage: publish on pypi
       python: 3.6
       install:
         - pip install poetry
       script:
-        - poetry install -v
-        - poetry build
-      deploy:
-        provider: pypi
-        user: mikevansighem
-        password: $PYPI_PASSWORD
-        on:
-          tags: true
+        - poetry publish --build -u mikevansighem -p $PYPI_PASSWORD -v
+      if: tag IS present
 
-    # Documentation deployment
+    # Documentation deployment if there is a tag
     - stage: deploy docs
       python: 3.6
       install:
@@ -114,6 +108,7 @@ jobs:
         on:
           tags: true
 
+  # Allow failure on experimental environments
   allow_failures:
     - env: TOXENV=mypy
     - env: TOXENV=py38
