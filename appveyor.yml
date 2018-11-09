@@ -8,6 +8,9 @@ image:
 
 build: false
 
+cache:
+- '%LOCALAPPDATA%\pip\Cache'
+
 environment:
 
   matrix:
