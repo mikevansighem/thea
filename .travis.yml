@@ -106,7 +106,7 @@ jobs:
         keep-history: true
         local_dir: site
         on:
-          tags: true
+          branch: master
 
   # Allow failure on experimental environments
   allow_failures:
