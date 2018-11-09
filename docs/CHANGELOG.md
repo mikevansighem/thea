@@ -1,4 +1,5 @@
 # 📜 Changelog
+
 All notable changes to Thea will be documented in this file which is 
 based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 For all Thea releases we adhere to 
@@ -6,17 +7,26 @@ For all Thea releases we adhere to
 
 ## [Unreleased]
 
-This is the most up-to-date version available on the [master branch]()
+This is the most up-to-date version available on the 
+[master branch](https://github.com/mikevansighem/thea)
 To see what we have planned for the next release head over to the
-[planned features]() section in our documentation.
+[planned features](https://mikevansighem.github.io/thea/PLANNED) 
+section in our documentation.
 
 ### Added
 
 -   This changelog 😉;
+-   A list of planed features;
+-   A release guide;
+
+### Changed
+
+-   Developer documentation;
 
 ### Fixed
 
--   Travis-CI not publishing to PyPi
+-   Travis-CI not publishing to PyPi;
+-   PyPi readme rendering;
 
 ## 0.0.1 - 2018-11-08
 

@@ -1,8 +1,8 @@
-# 👓 How it works
+# 👓 How Thea works
 
 ## Definitions
 
-Throughout the source-code for Thea we use a variety of terms the most
+Throughout the documentation for Thea we use a variety of terms the most
 import of which are defined below:
 
 -   Thea world: An object in which all other objects are stored. A world can be saved

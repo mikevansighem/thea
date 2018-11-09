@@ -34,16 +34,19 @@ data and simulation models that introduce an element of randomness.
 ## ✨ Features
 
 Currently Thea is in early development so the list of available features
-is a bit short. However we have a lot planned:
+is a bit short. However we have a lot planned. Have a look underneath for the most
+exciting ones, for the full list head over to the 
+[planned features](https://mikevansighem.github.io/thea/PLANNED) 
+section of our documentation.
 
--   [x] Accelerated model time ⏰
--   [ ] Day and night cycle 🌓
--   [ ] Hardware control over MQTT
--   [ ] Household lighting 🏡
--   [ ] Weather patterns ⛅️☔⚡️
--   [ ] Traffic 🚗🚕🚌
--   [ ] Opening-hours 🕗
--   [ ] Graphical user interface
--   [ ] Moon and stars 🌜✨
--   [ ] DCC train control 🚂
--   [ ] Weather sounds 🔉
+- [x] Accelerated model time ⏰
+- [ ] Day and night cycle 🌓
+- [ ] Hardware control over MQTT
+- [ ] Household lighting 🏡
+- [ ] Weather patterns ⛅️☔⚡️
+- [ ] Traffic 🚗🚕🚌
+- [ ] Opening-hours 🕗
+- [ ] Graphical user interface
+- [ ] Moon and stars 🌜✨
+- [ ] DCC train control 🚂
+- [ ] Weather sounds 🔉
