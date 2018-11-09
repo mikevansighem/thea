@@ -25,7 +25,6 @@ below if your version is supported. If you would like us to support more
 versions/platforms submit an enhancement request on 
 [Github]((https://github.com/mikevansighem/thea/issues)).
 
-
 |               | Python 3.6         | Python 3.7          | Python 3.8         |
 |:--------------|:------------------:|:-------------------:|:------------------:|
 | Windows x86   | :white_check_mark: | :white_check_mark:  | :construction:     |

@@ -5,7 +5,7 @@ based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 For all Thea releases we adhere to 
 [Semantic versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased](https://github.com/mikevansighem/thea/compare/v0.0.1...HEAD)
 
 This is the most up-to-date version available on the 
 [master branch](https://github.com/mikevansighem/thea)
@@ -41,4 +41,4 @@ any meaningful way.
 -   "Thing" creation;
 -   Saving and loading of "Thea worlds";
 
-[Unreleased]: https://github.com/mikevansighem/thea/compare/v0.0.1...HEAD
+

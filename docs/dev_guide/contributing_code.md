@@ -6,9 +6,9 @@ for contributing to the project.
 
 ## Installation
 
-To start contributing code to Thea you will need `git` which can be installed from
-the [git website](https://git-scm.com/). Also you will need `poetry` which
-you can get using:
+To start contributing code to Thea you will need `git` which can be 
+installed from the [git website](https://git-scm.com/). 
+Also you will need `poetry` which you can get using:
 
 ```bash
 # basic developer installation
@@ -30,6 +30,7 @@ Next, you will need to install the (developer) dependencies of thea.
 ```bash
 poetry install
 ```
+
 Check that everything is working on your machine before you make changes.
 
 ```bash
