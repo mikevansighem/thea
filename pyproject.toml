@@ -35,7 +35,6 @@ holidays = "^0.9.8"
 
 
 [tool.poetry.dev-dependencies]
-codacy-coverage = "^1"
 coverage ="^4"
 black = "^18"
 flake8= "^3"

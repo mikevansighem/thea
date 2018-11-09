@@ -75,6 +75,7 @@ jobs:
     - python: "3.6"
       env: TOXENV=coverage
       before_cache:
+        - pip install codacy-coverage
         - python-codacy-coverage -r coverage.xml
     - python: "3.6"
       env: TOXENV=black
