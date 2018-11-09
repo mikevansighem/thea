@@ -2,8 +2,8 @@
 
 Found a bug? Have a good idea for improving Thea? Head over to Thea's
 Github page and create and submit a new issue/enhancement request. Want
-to contribute your code? Go to the [contributing code]() section and submit a
-pull-request.
+to contribute your code? Go to the [contributing code]() section and submit 
+a pull-request.
 
 ## Feature request or bug report
 

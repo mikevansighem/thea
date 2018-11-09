@@ -22,7 +22,8 @@ from [Wikipedia](https://en.wikipedia.org/wiki/Thea) retrieved 1 November 2018.*
 
 Thea is used to control the environment of model (train) layouts based
 on real-world data and simulation models. Current development is focused
-around lighting 🌄 but we plan to expand the functionalities to include sound 🔉 and actuator control.
+around lighting 🌄 but we plan to expand the functionalities to include 
+sound 🔉 and actuator control.
 
 ---
 
@@ -48,31 +49,31 @@ data and simulation models that introduce an element of randomness.
 ## ✨ Features
 
 Currently Thea is in early development so the list of available features
-is a bit short. However we have a lot planned. Have a look underneath for the most
-exciting ones, for the full list head over to the 
+is a bit short. However we have a lot planned. Have a look underneath 
+for the most exciting ones, for the full list head over to the 
 [planned features](https://mikevansighem.github.io/thea/PLANNED) 
 section of our documentation.
 
-- [x] Accelerated model time ⏰
-- [ ] Day and night cycle 🌓
-- [ ] Hardware control over MQTT
-- [ ] Household lighting 🏡
-- [ ] Weather patterns ⛅️☔⚡️
-- [ ] Traffic 🚗🚕🚌
-- [ ] Opening-hours 🕗
-- [ ] Graphical user interface
-- [ ] Moon and stars 🌜✨
-- [ ] DCC train control 🚂
-- [ ] Weather sounds 🔉
+-   [x] Accelerated model time ⏰
+-   [ ] Day and night cycle 🌓
+-   [ ] Hardware control over MQTT
+-   [ ] Household lighting 🏡
+-   [ ] Weather patterns ⛅️☔⚡️
+-   [ ] Traffic 🚗🚕🚌
+-   [ ] Opening-hours 🕗
+-   [ ] Graphical user interface
+-   [ ] Moon and stars 🌜✨
+-   [ ] DCC train control 🚂
+-   [ ] Weather sounds 🔉
 
 ## 🤔 Getting started
 
 For an end user it might be a bit early to get started however
 if you really want to give Thea a try already head over to our
 [getting started guide](https://mikevansighem.github.io/thea/getting_started/)
-and follow the instructions. In case you would like to contribute head over to the
-[contributing](https://mikevansighem.github.io/thea/contibuting) section
-of our documentation. We are happy to receive pull-requests.
+and follow the instructions. In case you would like to contribute head over 
+to the [contributing](https://mikevansighem.github.io/thea/contibuting) 
+section of our documentation. We are happy to receive pull-requests.
 
 ## 📚 Documentation
 

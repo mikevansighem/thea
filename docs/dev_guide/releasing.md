@@ -28,17 +28,25 @@ Within `pyproject.toml` the version number needs to be bumped up according
 to [Semantic versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Updating the changelog
+
 Update the [changelog]() 
 to include all notable changes. The format of our changelog is based on 
 [Keep a changelog](https://keepachangelog.com/en/1.0.0/). 
 Most importantly this means we sort the changes in categories:
 
 -   Added: new features;
+
 -   Changed: changes in existing functionality;
+
 -   Deprecated: soon-to-be removed features;
+
 -   Removed: now removed features;
--   Fixed: bug fixes (if available include a link to the issue);
--   Security: fixing of vulnerabilities (if available include a link to the issue).
+
+-   Fixed: bug fixes 
+    (if available include a link to the issue);
+
+-   Security: fixing of vulnerabilities 
+    (if available include a link to the issue).
 
 Within categories we sort based on importance to an end users. For the rest 
 Of the formatting just copy it from a previous release 😉.

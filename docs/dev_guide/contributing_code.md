@@ -95,7 +95,6 @@ poetry remove dependancy_name
 poetry update
 ```
 
-
 ### Committing
 
 Each time you make a notable change to your code you are wise to commit it 

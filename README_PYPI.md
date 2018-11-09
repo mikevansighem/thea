@@ -7,7 +7,8 @@ from [Wikipedia](https://en.wikipedia.org/wiki/Thea) retrieved 1 November 2018.*
 
 Thea is used to control the environment of model (train) layouts based
 on real-world data and simulation models. Current development is focused
-around lighting but we plan to expand the functionalities to include sound and actuator control.
+around lighting but we plan to expand the functionalities to include sound 
+and actuator control.
 
 ---
 
@@ -49,17 +50,17 @@ exciting ones, for the full list head over to the
 [planned features](https://mikevansighem.github.io/thea/PLANNED) 
 section of our documentation.
 
-- [x] Accelerated model time;
-- [ ] Day and night cycle;
-- [ ] Hardware control over MQTT;
-- [ ] Household lighting;
-- [ ] Weather patterns;
-- [ ] Traffic;
-- [ ] Opening-hours;
-- [ ] Graphical user interface;
-- [ ] Moon and stars;
-- [ ] DCC train control;
-- [ ] Weather sounds.
+-   [x] Accelerated model time;
+-   [ ] Day and night cycle;
+-   [ ] Hardware control over MQTT;
+-   [ ] Household lighting;
+-   [ ] Weather patterns;
+-   [ ] Traffic;
+-   [ ] Opening-hours;
+-   [ ] Graphical user interface;
+-   [ ] Moon and stars;
+-   [ ] DCC train control;
+-   [ ] Weather sounds.
 
 ## Getting started
 
