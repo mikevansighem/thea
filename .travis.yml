@@ -107,8 +107,7 @@ jobs:
         github-token: $GITHUB_TOKEN
         keep-history: true
         local_dir: site
-        on:
-          branch: master
+      if: branch = master
 
   # Allow failure on experimental environments
   allow_failures:
