@@ -23,6 +23,16 @@ environment:
     - PYTHON: "C:\\Python3.7-x64"
       TOX_ENV: "py37"
 
+    - PYTHON: "C:\\Python3.8"
+      TOX_ENV: "py38"
+
+    - PYTHON: "C:\\Python3.8-x64"
+      TOX_ENV: "py38"
+
+matrix:
+  allow_failures:
+    - TOX_ENV: "py38"
+
 install:
 
   # Perpend python to PATH

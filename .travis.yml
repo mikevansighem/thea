@@ -46,12 +46,14 @@ jobs:
     - python: "3.6"
       env: TOXENV=py36
       os: linux
-    - python: "3.7-dev"
+    - python: "3.7"
       env: TOXENV=py37
       os: linux
+      dist: xenial # needed because Python 3.7 is broken on Travis CI Trusty
     - python: "3.8-dev"
       env: TOXENV=py38
       os: linux
+      dist: xenial # needed because Python 3.8 is broken on Travis CI Trusty
 
     # Testing on osx, see: https://pythonhosted.org/CodeChat/.travis.yml.html
     - language: generic
