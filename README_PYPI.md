@@ -19,7 +19,7 @@ around lighting but we plan to expand the functionalities to include sound and a
 [![Docs](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=docs)](https://mikevansighem.github.io/thea/)
 [![Codacy Badge](https://img.shields.io/codacy/grade/bb3d838b073c489b89232463f0c2cf66.svg)](https://www.codacy.com/app/mikevansighem/thea?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mikevansighem/thea&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://img.shields.io/codacy/coverage/bb3d838b073c489b89232463f0c2cf66.svg)](https://www.codacy.com/app/mikevansighem/thea?utm_source=github.com&utm_medium=referral&utm_content=mikevansighem/thea&utm_campaign=Badge_Coverage)
-[![GitHub issues](https://img.shields.io/github/issues/mikevansighem/thea.svg)](https://github.com/mikevansighem/thea/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/mikevansighem/thea.svg)](https://github.com/mikevansighem/thea/issues)
 [![License: LGPL 3](https://img.shields.io/badge/license-LGPL%203-blue.svg)](LICENSE.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 [![Say Thanks](https://img.shields.io/badge/say%20thanks-!-blue.svg)](https://saythanks.io/to/mikevansighem)
