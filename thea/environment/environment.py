@@ -58,9 +58,6 @@ class Environment:
 
         # Next edit variables solely dependent upon date-time (and/or settings)
         self.variables["season"] = updaters.season(self.variables["datetime"])
-        self.variables["workday"] = updaters.workday(
-            self.variables["datetime"], self.settings["country"]
-        )
         self.variables["holiday"] = updaters.holiday(
             self.variables["datetime"], self.settings["country"]
         )
@@ -69,6 +66,11 @@ class Environment:
         )
 
         # Next edit variables dependent on other variables (and/or settings)
+        self.variables["workday"] = updaters.workday(
+            self.variables["datetime"],
+            self.variables["holiday"],
+            self.settings["country"],
+        )
         self.variables.update(
             updaters.solar_position(**self.settings, **self.variables)
         )

@@ -11,7 +11,7 @@ ENV_VARIABLES["datetime"] = arrow.get(
 # Enviroment settings
 ENV_SETTINGS = {}
 ENV_SETTINGS["time_factor"] = 10000
-ENV_SETTINGS["country"] = "netherlands"
+ENV_SETTINGS["country"] = "NL"
 ENV_SETTINGS["latitude"] = 52.3
 ENV_SETTINGS["longitude"] = 4.8
 ENV_SETTINGS["altitude"] = -2
