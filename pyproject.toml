@@ -21,16 +21,17 @@ classifiers = [
 # Compatible python versions
 python = "^3.6"
 
-# Normal dependencies
-arrow="^0"
-paho-mqtt="^1"
-pvlib="^0"
-
 # Optional/extra dependencies for docs
 mkdocs = {version = "^1", optional = true}
 mkdocs-material = {version = "^3", optional = true}
 pygments = {version = "^2", optional = true}
 pymdown-extensions = {version = "^6", optional = true}
+
+# Normal dependencies
+arrow="^0"
+paho-mqtt="^1"
+pvlib="^0"
+holidays = "^0.9.8"
 
 
 [tool.poetry.dev-dependencies]
@@ -58,12 +59,6 @@ my-script = 'thea:__main__'
 
 
 # Specifies tools for building
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
-
-
-# Retrieved from: https://github.com/ambv/black/blob/master/pyproject.toml
 [tool.black]
 line-length = 88
 py36 = true
@@ -81,3 +76,9 @@ exclude = '''
   | dist
 )/
 '''
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+
+# Retrieved from: https://github.com/ambv/black/blob/master/pyproject.toml
