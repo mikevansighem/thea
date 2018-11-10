@@ -1,6 +1,9 @@
 """Functions to setup loggers."""
 
 import os
+import sys
+import socket
+import platform
 import logging
 import arrow
 from logging.config import fileConfig
@@ -8,6 +11,12 @@ from logging.config import fileConfig
 # Make log config relative to module
 LOGGING_CONFIG_LOCATION = "logging.ini"
 LOGS_DIRECTORY = "logs"
+
+
+def log_exception(exctype, value, tb):
+    """Catches exceptions in the logs"""
+
+    logging.error("Uncaught exception:", exc_info=(exctype, value, tb))
 
 
 def main_logger():
@@ -34,22 +43,19 @@ def main_logger():
 
     else:
         logger = logging.getLogger(__name__)
-        logger.info(f"Setup root logger to save to: '{log_file}'.")
 
     # Set logging level for all other then Thea to warning
     for key in logging.Logger.manager.loggerDict:
         if "thea" not in key:
             logging.getLogger(key).setLevel(logging.WARNING)
 
+    # Catch exceptions and warnings in log
+    sys.excepthook = log_exception
+    logging.captureWarnings(True)
+
+    # add some basic information to the log for debugging
+    logger.debug(f"Setup root logger to save to: '{log_file}'.")
+    logger.debug(f"Running on hostname: '{socket.gethostname()}'")
+    logger.debug(f"Running on platform: '{platform.platform()}'")
+
     return logger
-
-
-def vebosity(verbose=False):
-    """Adjusts verbosity of the printing to console"""
-
-    from . import logger
-
-    if verbose is True:
-        logger.parent.handlers[0].setLevel(logging.DEBUG)
-    else:
-        logger.parent.handlers[0].setLevel(logging.INFO)

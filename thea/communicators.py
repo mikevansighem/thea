@@ -30,7 +30,7 @@ class Communicator(BaseItem):
 
         self.comm_handler = Process(
             target=self.comm_handler,
-            args=(self.message_queue, *self.properties),
+            args=(self.message_queue, self.properties),
             daemon=True,
         )
 
@@ -53,11 +53,15 @@ class Communicator(BaseItem):
 
         if self.status is False:
 
+            logger.info(f"Started connecting '{self}'")
+
             # Start daemon process
             self.comm_handler.start()
 
             # TODO: Wait for confirmation of connection
             # TODO: Status is retried from the thread
+
+            logger.info(f"Successfully connected '{self}'")
 
     def disconnect(self):
         """Disconnect and shutdown the daemon process."""

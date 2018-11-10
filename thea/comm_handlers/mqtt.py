@@ -41,7 +41,10 @@ def on_message():
     pass
 
 
-def mqtt(message_queue, mqtt_port):
+def mqtt(message_queue, properties):
+
+    mqtt_port = properties["mqtt_port"]
+    logger.info(f"MQTT comm handler received port property: '{mqtt_port}'")
 
     # Start the broker
     broker_process = start_mqtt_broker(mqtt_port)

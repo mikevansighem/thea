@@ -38,7 +38,7 @@ up to a point where it is possible for new contributers to join.
 -   [x] PyPi readme rendering;
 -   [x] Third party log messages in Thea logs;
 -   [x] PyPi readme rendering;
--   [ ] Warnings from the warnings module not in logs;
+-   [x] Warnings from the warnings module not in logs;
 
 ## Later
 

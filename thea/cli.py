@@ -1,12 +1,15 @@
 import argparse
+import warnings
+import logging
 
 from .thea_world import TheaWorld
 from . import logger
-from . import logging_setup
 
 
 def cli_main():
     """Function to try out common Thea commands."""
+
+    warnings.warn("The CLI-app is not ready yet and is currently used for debugging.")
 
     # Setup new Thea Wrapper
     tw = TheaWorld()
@@ -19,22 +22,22 @@ def cli_main():
         tw.things.new(type_="shop")
 
     # Show the things
-    print(tw.things.get())
+    # print(tw.things.get())
 
     # Add a communicator
     tw.communicators.new(type_="mqtt")
 
     # Connect the communicator
-    # comm = tw.communicators.get(name='mqtt0', single_item=True)
-    # print(comm.status)
-    # comm.connect()
-    # print(comm.status)
+    comm = tw.communicators.get(name="mqtt0", single_item=True)
+    print(comm.status)
+    comm.connect()
+    print(comm.status)
 
     while True:
 
         # Update environment
         tw.update()
-        tw.environment.print()
+        # tw.environment.print()
 
 
 def cli_app():
@@ -48,8 +51,14 @@ def cli_app():
     )
     args = parser.parse_args()
 
+    # Force debug logging TODO remove
+    args.verbose = True
+
     # Set verbosity level of logger
-    logging_setup.vebosity(args.verbose)
+    if args.verbose is True:
+        logger.parent.handlers[0].setLevel(logging.DEBUG)
+    else:
+        logger.parent.handlers[0].setLevel(logging.INFO)
 
     # Start main
     cli_main()

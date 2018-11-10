@@ -29,6 +29,7 @@ section in our documentation.
 -   Travis-CI not publishing to PyPi;
 -   PyPi readme rendering;
 -   Third party log messages in Thea logs;
+-   Exceptions and warnings from the warnings module not in logs;
 
 ## 0.0.1 - 2018-11-08
 
