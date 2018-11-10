@@ -83,6 +83,8 @@ jobs:
       env: TOXENV=docs
     - python: "3.6"
       env: TOXENV=mypy
+    - python: "3.6"
+      env: TOXENV=safety
 
 
     # Publish on PyPi if there is a tag

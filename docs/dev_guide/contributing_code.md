@@ -89,6 +89,9 @@ isn't really important as long as you remember the following commands.
 # adding a dependency
 poetry add dependancy_name
 
+# adding a developer dependency
+poetry add dependancy_name --dev
+
 # removing a dependency
 poetry remove dependancy_name
 

@@ -49,6 +49,7 @@ pytest-cov= "^2"
 
 
 # Defines extras
+safety = "^1.8"
 [tool.poetry.extras]
 docs = ["mkdocs","mkdocs-material", "pygments", "pymdown-extensions "]
 

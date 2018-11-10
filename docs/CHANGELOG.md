@@ -18,6 +18,7 @@ section in our documentation.
 -   This changelog 😉;
 -   A list of planed features;
 -   A release guide;
+-   Dependency checks using safety CI;
 
 ### Changed
 

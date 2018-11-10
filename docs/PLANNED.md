@@ -17,6 +17,7 @@ up to a point where it is possible for new contributers to join.
 -   [ ] Communication with MQTT hardware modules;
 -   [ ] Bug checking using bugbear;
 -   [ ] Testing for `TheaWorld` found in `thea_world.py`;
+-   [x] Dependency checks using safety CI
 
 ### Changed
 
