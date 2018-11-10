@@ -5,8 +5,6 @@ import logging
 import arrow
 from logging.config import fileConfig
 
-# from . import __version__
-
 # Make log config relative to module
 LOGGING_CONFIG_LOCATION = "logging.ini"
 LOGS_DIRECTORY = "logs"
@@ -37,7 +35,11 @@ def main_logger():
     else:
         logger = logging.getLogger(__name__)
         logger.info(f"Setup root logger to save to: '{log_file}'.")
-        # logger.info(f"Using Thea version: '{__version__}'.")
+
+    # Set logging level for all other then Thea to warning
+    for key in logging.Logger.manager.loggerDict:
+        if "thea" not in key:
+            logging.getLogger(key).setLevel(logging.WARNING)
 
     return logger
 

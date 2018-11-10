@@ -19,6 +19,8 @@ except pkg_resources.DistributionNotFound:
 from . import logging_setup
 
 logger = logging_setup.main_logger()
+logger.info(f"Using Thea version: '{__version__}'.")
+
 
 # Now the logger is setup import the public objects
 from .thea_world import TheaWorld

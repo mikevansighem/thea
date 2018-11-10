@@ -35,7 +35,7 @@ up to a point where it is possible for new contributers to join.
 
 -   [x] Travis-CI not publishing to PyPi;
 -   [x] PyPi readme rendering;
--   [ ] Third party log messages in Thea logs;
+-   [x] Third party log messages in Thea logs;
 -   [x] PyPi readme rendering;
 -   [ ] Warnings from the warnings module not in logs;
 
