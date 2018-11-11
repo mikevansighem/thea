@@ -50,17 +50,22 @@ exciting ones, for the full list head over to the
 [planned features](https://mikevansighem.github.io/thea/PLANNED) 
 section of our documentation.
 
--   [x] Accelerated model time;
--   [ ] Day and night cycle;
--   [ ] Hardware control over MQTT;
--   [ ] Household lighting;
--   [ ] Weather patterns;
--   [ ] Traffic;
--   [ ] Opening-hours;
--   [ ] Graphical user interface;
--   [ ] Moon and stars;
--   [ ] DCC train control;
--   [ ] Weather sounds.
+### Here now
+
+-   Accelerated model time;
+
+### Planned
+
+-   Day and night cycle;
+-   Hardware control over MQTT;
+-   Household lighting;
+-   Weather patterns;
+-   Traffic;
+-   Opening-hours;
+-   Graphical user interface;
+-   Moon and stars;
+-   DCC train control;
+-   Weather sounds.
 
 ## Getting started
 

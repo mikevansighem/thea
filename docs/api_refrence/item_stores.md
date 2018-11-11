@@ -8,9 +8,13 @@ indented to be inherited and not to be used directly.
 A class to store and create `BaseItems`.
 
 ### New
+
 ### Delete
+
 ### Edit
+
 ### Get
+
 ### Savable state
 
 ## BaseItem
