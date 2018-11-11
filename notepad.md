@@ -3,7 +3,6 @@
 ## Quick todo
 -   Environment factory with location presets.
 -   Lunar: face https://pylunar.readthedocs.io/en/latest/usage.html
--   Handle warnings in logging
 
 ## Notes
 -   timezone according to IANA timezone

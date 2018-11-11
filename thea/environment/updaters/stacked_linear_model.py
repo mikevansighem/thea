@@ -40,7 +40,7 @@ class StackedLinearModel:
         # Sort the list based on time
         self.data_points = sorted(self.data_points)
 
-    def get_value(self, date_time):
+    def get_value(self, date_time) -> float:
 
         # Normalize time
         if isinstance(date_time, int):

@@ -132,11 +132,11 @@ class BaseStore:
         """Returns the name with lowest available number."""
 
         counter = 0
-        generated_name = self.name_template.substitute(type_=type_, number=counter)
+        generated_name = self.name_template.substitute(type_=type_, number=str(counter))
 
         while not self._name_available(generated_name):
 
-            generated_name = self.name_template.substitute(type_=type_, number=counter)
+            generated_name = self.name_template.substitute(type_=type_, number=str(counter))
             counter += 1
 
         return generated_name
@@ -227,7 +227,8 @@ class BaseStore:
             return output_list[0]
 
         elif single_item is True and len(output_list) != 1:
-            raise warnings.warn("Only returned first item matching your query.")
+            warnings.warn("Only returned first item matching your query.")
+            return output_list[0]
 
         else:
             return output_list
