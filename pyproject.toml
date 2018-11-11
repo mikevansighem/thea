@@ -38,7 +38,6 @@ holidays = "^0.9.8"
 coverage ="^4"
 black = "^18"
 flake8= "^3"
-#flake8-bugbear= "^18.6"
 flake8-docstrings= "^1"
 flake8-import-order= "^0"
 mypy= "^0"
@@ -46,10 +45,10 @@ pep8-naming= "^0"
 pre-commit= "^1"
 pytest= "^3"
 pytest-cov= "^2"
-
-
-# Defines extras
 safety = "^1.8"
+flake8-bugbear = "^18.8"
+
+
 [tool.poetry.extras]
 docs = ["mkdocs","mkdocs-material", "pygments", "pymdown-extensions "]
 

@@ -19,6 +19,7 @@ section in our documentation.
 -   A list of planed features;
 -   A release guide;
 -   Dependency checks using safety CI;
+-   Bug checking using flake8-bugbear
 
 ### Changed
 
