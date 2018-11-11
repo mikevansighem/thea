@@ -13,7 +13,7 @@
         <meta name="description" content="Documentation for Thea.">
       
       
-        <link rel="canonical" href="https://mikevansighem.github.io/thea/">
+        <link rel="canonical" href="https://mikevansighem.github.io/thea/dev_guide/testing_and_ci/">
       
       
         <meta name="author" content="Mike van Sighem">
@@ -37,18 +37,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="shortcut icon" href="../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
     
     
       
-        <title>Thea</title>
+        <title>Testing and CI - Thea</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -57,7 +57,7 @@
       
     
     
-      <script src="assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
@@ -66,7 +66,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#thea" tabindex="1" class="md-skip">
+      <a href="#testing-and-ci" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -115,7 +115,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href="https://mikevansighem.github.io/thea/" title="Thea" class="md-header-nav__button md-logo">
           
-            <img src="images/thea_icon.svg" width="24" height="24">
+            <img src="../../images/thea_icon.svg" width="24" height="24">
           
         </a>
       </div>
@@ -130,7 +130,7 @@
                 Thea
               </span>
               <span class="md-header-nav__topic">
-                Welcome
+                Testing and CI
               </span>
             
           
@@ -202,14 +202,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="." title="Welcome" class="md-tabs__link md-tabs__link--active">
+      <a href="../.." title="Welcome" class="md-tabs__link">
         Welcome
       </a>
     
@@ -233,7 +235,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="not_available/" title="Environment" class="md-tabs__link">
+        <a href="../../not_available/" title="Environment" class="md-tabs__link">
           Environment
         </a>
       
@@ -246,7 +248,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="not_available/" title="Hardware" class="md-tabs__link">
+        <a href="../../not_available/" title="Hardware" class="md-tabs__link">
           Hardware
         </a>
       
@@ -259,7 +261,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="CONTRIBUTING/" title="Developer guide" class="md-tabs__link">
+        <a href="../../CONTRIBUTING/" title="Developer guide" class="md-tabs__link md-tabs__link--active">
           Developer guide
         </a>
       
@@ -272,7 +274,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="api_refrence/item_stores/" title="API refrence" class="md-tabs__link">
+        <a href="../../api_refrence/item_stores/" title="API refrence" class="md-tabs__link">
           API refrence
         </a>
       
@@ -295,7 +297,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="https://mikevansighem.github.io/thea/" title="Thea" class="md-nav__button md-logo">
       
-        <img src="images/thea_icon.svg" width="48" height="48">
+        <img src="../../images/thea_icon.svg" width="48" height="48">
       
     </a>
     Thea
@@ -329,63 +331,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Welcome
-      </label>
-    
-    <a href="." title="Welcome" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../.." title="Welcome" class="md-nav__link">
       Welcome
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#origin" title="🌱 Origin" class="md-nav__link">
-    🌱 Origin
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#principles" title="☑️ Principles" class="md-nav__link">
-    ☑️ Principles
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#features" title="✨ Features" class="md-nav__link">
-    ✨ Features
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -395,7 +345,7 @@
 
 
   <li class="md-nav__item">
-    <a href="welcome/getting_started/" title="Getting started" class="md-nav__link">
+    <a href="../../welcome/getting_started/" title="Getting started" class="md-nav__link">
       Getting started
     </a>
   </li>
@@ -407,7 +357,7 @@
 
 
   <li class="md-nav__item">
-    <a href="welcome/how_it_works/" title="How it works" class="md-nav__link">
+    <a href="../../welcome/how_it_works/" title="How it works" class="md-nav__link">
       How it works
     </a>
   </li>
@@ -419,7 +369,7 @@
 
 
   <li class="md-nav__item">
-    <a href="welcome/haveing_issues/" title="Haveing issues?!" class="md-nav__link">
+    <a href="../../welcome/haveing_issues/" title="Haveing issues?!" class="md-nav__link">
       Haveing issues?!
     </a>
   </li>
@@ -431,7 +381,7 @@
 
 
   <li class="md-nav__item">
-    <a href="PLANNED/" title="Planned features" class="md-nav__link">
+    <a href="../../PLANNED/" title="Planned features" class="md-nav__link">
       Planned features
     </a>
   </li>
@@ -443,7 +393,7 @@
 
 
   <li class="md-nav__item">
-    <a href="CHANGELOG/" title="Changelog" class="md-nav__link">
+    <a href="../../CHANGELOG/" title="Changelog" class="md-nav__link">
       Changelog
     </a>
   </li>
@@ -455,7 +405,7 @@
 
 
   <li class="md-nav__item">
-    <a href="LICENSE/" title="License" class="md-nav__link">
+    <a href="../../LICENSE/" title="License" class="md-nav__link">
       License
     </a>
   </li>
@@ -486,7 +436,7 @@
 
 
   <li class="md-nav__item">
-    <a href="not_available/" title="Solar position" class="md-nav__link">
+    <a href="../../not_available/" title="Solar position" class="md-nav__link">
       Solar position
     </a>
   </li>
@@ -522,7 +472,7 @@
 
 
   <li class="md-nav__item">
-    <a href="not_available/" title="MQTT-module" class="md-nav__link">
+    <a href="../../not_available/" title="MQTT-module" class="md-nav__link">
       MQTT-module
     </a>
   </li>
@@ -537,10 +487,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10" checked>
     
     <label class="md-nav__link" for="nav-10">
       Developer guide
@@ -558,7 +510,7 @@
 
 
   <li class="md-nav__item">
-    <a href="CONTRIBUTING/" title="Contributing" class="md-nav__link">
+    <a href="../../CONTRIBUTING/" title="Contributing" class="md-nav__link">
       Contributing
     </a>
   </li>
@@ -570,7 +522,7 @@
 
 
   <li class="md-nav__item">
-    <a href="dev_guide/contributing_code/" title="Working on code" class="md-nav__link">
+    <a href="../contributing_code/" title="Working on code" class="md-nav__link">
       Working on code
     </a>
   </li>
@@ -580,11 +532,70 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="dev_guide/testing_and_ci/" title="Testing and CI" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Testing and CI
+      </label>
+    
+    <a href="./" title="Testing and CI" class="md-nav__link md-nav__link--active">
       Testing and CI
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-testing" title="Code testing" class="md-nav__link">
+    Code testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formating-checks" title="Formating checks" class="md-nav__link">
+    Formating checks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tox" title="Tox" class="md-nav__link">
+    Tox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration" title="Continuous integration" class="md-nav__link">
+    Continuous integration
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -594,7 +605,7 @@
 
 
   <li class="md-nav__item">
-    <a href="dev_guide/releasing/" title="Releasing" class="md-nav__link">
+    <a href="../releasing/" title="Releasing" class="md-nav__link">
       Releasing
     </a>
   </li>
@@ -630,7 +641,7 @@
 
 
   <li class="md-nav__item">
-    <a href="api_refrence/item_stores/" title="Item stores" class="md-nav__link">
+    <a href="../../api_refrence/item_stores/" title="Item stores" class="md-nav__link">
       Item stores
     </a>
   </li>
@@ -662,22 +673,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#origin" title="🌱 Origin" class="md-nav__link">
-    🌱 Origin
+  <a href="#code-testing" title="Code testing" class="md-nav__link">
+    Code testing
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#principles" title="☑️ Principles" class="md-nav__link">
-    ☑️ Principles
+  <a href="#formating-checks" title="Formating checks" class="md-nav__link">
+    Formating checks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#features" title="✨ Features" class="md-nav__link">
-    ✨ Features
+  <a href="#tox" title="Tox" class="md-nav__link">
+    Tox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration" title="Continuous integration" class="md-nav__link">
+    Continuous integration
   </a>
   
 </li>
@@ -698,52 +716,132 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/mikevansighem/thea/edit/master/docs/index.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/mikevansighem/thea/edit/master/docs/dev_guide/testing_and_ci.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="thea">Thea<a class="headerlink" href="#thea" title="Permanent link">&para;</a></h1>
-<p><em><strong>"Titaness of (...) the shining light of the clear blue sky"</strong>
-from <a href="https://en.wikipedia.org/wiki/Thea">Wikipedia</a> retrieved 1 November 2018.</em></p>
-<hr />
-<p>Thea is used to control the environment of model (train) layouts based
-on real-world data and simulation models. Current development is focused
-around lighting 🌄 but we plan to expand the functionalities to include
-sound 🔉 and actuator control.</p>
-<hr />
-<p><img alt="" src="images/header.png" /></p>
-<hr />
-<h2 id="origin">🌱 Origin<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h2>
-<p>This project was started in order to control lighting of model-train
-layouts in more interesting ways. Most solutions only offer manual
-and rule based control resulting in very predictive behavior. Thea
-breaks with this by controlling the model environment based on real-word
-data and simulation models that introduce an element of randomness.</p>
-<h2 id="principles">☑️ Principles<a class="headerlink" href="#principles" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Science based environment simulation;</li>
-<li>Simple to start but complex if you want to;</li>
-<li>Modern user interface;</li>
-<li>Support for common hardware;</li>
-</ul>
-<h2 id="features">✨ Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
-<p>Currently Thea is in early development so the list of available features
-is a bit short. However we have a lot planned. Have a look underneath 
-for the most exciting ones, for the full list head over to the 
-<a href="https://mikevansighem.github.io/thea/PLANNED">planned features</a> 
-section of our documentation.</p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Accelerated model time ⏰</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Day and night cycle 🌓</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Hardware control over MQTT</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Household lighting 🏡</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Weather patterns ⛅️☔⚡️</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Traffic 🚗🚕🚌</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Opening-hours 🕗</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Graphical user interface</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Moon and stars 🌜✨</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> DCC train control 🚂</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Weather sounds 🔉</li>
-</ul>
+                <h1 id="testing-and-ci">🚨 Testing and CI<a class="headerlink" href="#testing-and-ci" title="Permanent link">&para;</a></h1>
+<p>To help us find errors we have a number of tests and checks. Which we can 
+run locally but will also run on our continuous integration (CI) system.
+For any of the commands in this section to work we assume you have installed
+Thea according to the 
+<a href="">developer installation</a> 
+instructions.</p>
+<h2 id="code-testing">Code testing<a class="headerlink" href="#code-testing" title="Permanent link">&para;</a></h2>
+<p>All our code tests are located in <code class="codehilite">/tests</code> and implemented using 
+<a href="https://docs.pytest.org/en/latest/goodpractices.html">pytest</a>. To run 
+on your main python installation use: </p>
+<div class="codehilite"><pre><span></span>pytest
+</pre></div>
+
+<p>If you would like coverage information as well use:</p>
+<div class="codehilite"><pre><span></span>py.test --cov
+</pre></div>
+
+<h2 id="formating-checks">Formating checks<a class="headerlink" href="#formating-checks" title="Permanent link">&para;</a></h2>
+<p>In addition to tests for functionality of the code we have checks for the
+formatting of the code. For this we use <a href="http://flake8.pycqa.org/en/latest/">Flake8</a>
+extended with <a href="https://gitlab.com/pycqa/flake8-docstrings">flake8-docstrings</a> 
+and <a href="https://github.com/PyCQA/pep8-naming">pep8-naming</a>. To run the formatting
+checks use:</p>
+<div class="codehilite"><pre><span></span>flake8
+</pre></div>
+
+<h2 id="tox">Tox<a class="headerlink" href="#tox" title="Permanent link">&para;</a></h2>
+<p>To test against multiple python versions and manage all test environments 
+we use <a href="https://tox.readthedocs.io/en/latest/">tox</a>. To install:</p>
+<div class="codehilite"><pre><span></span>pip install tox
+</pre></div>
+
+<p>To run the entire test suite including formatting and typing checks use:</p>
+<div class="codehilite"><pre><span></span>tox
+</pre></div>
+
+<h2 id="continuous-integration">Continuous integration<a class="headerlink" href="#continuous-integration" title="Permanent link">&para;</a></h2>
+<p>To ease the load on our developers we have set up an extensive continuous 
+integration (CI) system. It takes care of building, testing and deployment 
+of code and the documentation. To enable multi-platform testing we had to 
+use both <a href="https://travis-ci.com/mikevansighem/thea">Travis-CI</a> and 
+<a href="https://ci.appveyor.com/project/mikevansighem/theia/branch/master">AppVeyor</a> 
+To see which service is used to perform what tasks refer to the table below. </p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">Travis-CI</th>
+<th align="center">AppVeyor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Testing on Windows</td>
+<td align="center"></td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td align="left">Testing on Linux</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Testing on OSX</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Minimum coverage</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Formatting (flake8)</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Formatting (black)</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Typing (mypy)</td>
+<td align="center"><img alt="🚧" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f6a7.svg" title=":construction:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Building documentation</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Deploying documentation</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Deploying on PyPi</td>
+<td align="center"><img alt="✅" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Building executable</td>
+<td align="center"></td>
+<td align="center"><img alt="🚧" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f6a7.svg" title=":construction:" /></td>
+</tr>
+<tr>
+<td align="left">Deploying executable</td>
+<td align="center"></td>
+<td align="center"><img alt="🚧" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f6a7.svg" title=":construction:" /></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Type checking using mypy and building an executable are not functional yet.</p>
+</div>
+<p>To help improve the quality of our code further it is analyzed by 
+<a href="https://app.codacy.com/project/mikevansighem/thea/dashboard">Codacy</a> 
+which displays linting, security, formatting and coverage results 
+in a easy to use interface.</p>
                 
                   
                 
@@ -764,14 +862,28 @@ section of our documentation.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
+          <a href="../contributing_code/" title="Working on code" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Working on code
+              </span>
+            </div>
+          </a>
         
-          <a href="welcome/getting_started/" title="Getting started" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+        
+          <a href="../releasing/" title="Releasing" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Getting started
+                Releasing
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -805,9 +917,9 @@ section of our documentation.</p>
       
     </div>
     
-      <script src="assets/javascripts/application.5e60981f.js"></script>
+      <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     
