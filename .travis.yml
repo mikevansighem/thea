@@ -46,12 +46,14 @@ jobs:
     - python: "3.6"
       env: TOXENV=py36
       os: linux
-    - python: "3.7-dev"
+    - python: "3.7"
       env: TOXENV=py37
       os: linux
+      dist: xenial # needed because Python 3.7 is broken on Travis CI Trusty
     - python: "3.8-dev"
       env: TOXENV=py38
       os: linux
+      dist: xenial # needed because Python 3.8 is broken on Travis CI Trusty
 
     # Testing on osx, see: https://pythonhosted.org/CodeChat/.travis.yml.html
     - language: generic
@@ -72,7 +74,8 @@ jobs:
       env: TOXENV=flake8
     - python: "3.6"
       env: TOXENV=coverage
-      after_test:
+      before_cache:
+        - pip install codacy-coverage
         - python-codacy-coverage -r coverage.xml
     - python: "3.6"
       env: TOXENV=black
@@ -80,24 +83,20 @@ jobs:
       env: TOXENV=docs
     - python: "3.6"
       env: TOXENV=mypy
+    - python: "3.6"
+      env: TOXENV=safety
 
 
-    # Publish on PyPi
-    - stage: publish on PyPi
+    # Publish on PyPi if there is a tag
+    - stage: publish on pypi
       python: 3.6
       install:
         - pip install poetry
       script:
-        - poetry install -v
-        - poetry build
-      deploy:
-        provider: pypi
-        user: mikevansighem
-        password: $PYPI_PASSWORD
-        on:
-          tags: true
+        - poetry publish --build -u mikevansighem -p $PYPI_PASSWORD -v
+      if: tag IS present
 
-    # Documentation deployment
+    # Documentation deployment if there is a tag
     - stage: deploy docs
       python: 3.6
       install:
@@ -111,9 +110,9 @@ jobs:
         github-token: $GITHUB_TOKEN
         keep-history: true
         local_dir: site
-        on:
-          tags: true
+      if: branch = master
 
+  # Allow failure on experimental environments
   allow_failures:
     - env: TOXENV=mypy
     - env: TOXENV=py38

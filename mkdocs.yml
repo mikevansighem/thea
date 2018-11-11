@@ -7,15 +7,26 @@ repo_name: 'mikevansighem/thea'
 repo_url: 'https://github.com/mikevansighem/thea'
 
 nav:
-  - Home: index.md
-  - Getting started: getting_started.md
-  - How it works: how_it_works.md
-  - Testing and CI: testing_and_ci.md
-  - Contributing: contributing.md
+  - Welcome: index.md
+  - Getting started: welcome/getting_started.md
+  - How it works: welcome/how_it_works.md
+  - Haveing issues?!: welcome/haveing_issues.md
+  - Planned features: PLANNED.md
+  - Changelog: CHANGELOG.md
+  - License: LICENSE.md
+
   - Environment:
     - Solar position: not_available.md
+
   - Hardware:
     - MQTT-module: not_available.md
+
+  - Developer guide:
+    - Contributing: CONTRIBUTING.md
+    - Working on code: dev_guide/contributing_code.md
+    - Testing and CI: dev_guide/testing_and_ci.md
+    - Releasing: dev_guide/releasing.md
+
   - API refrence:
     - Item stores: api_refrence/item_stores.md
 

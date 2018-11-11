@@ -1,8 +1,10 @@
 import arrow
+import logging
 from .default import ENV_SETTINGS, ENV_VARIABLES
 from ..pretty_printing import pretty_string, pretty_dict
 from . import updaters
-from .. import logger
+
+logger = logging.getLogger(__name__)
 
 
 class Environment:
@@ -28,7 +30,7 @@ class Environment:
         # Set the non missing variables back to the passed values
         self.variables.update(variables)
 
-        logger.debug(f"Created a new instance of {self}.")
+        logger.debug(f"Created a new instance of '{self}'.")
 
     def __repr__(self) -> str:
 
@@ -58,9 +60,6 @@ class Environment:
 
         # Next edit variables solely dependent upon date-time (and/or settings)
         self.variables["season"] = updaters.season(self.variables["datetime"])
-        self.variables["workday"] = updaters.workday(
-            self.variables["datetime"], self.settings["country"]
-        )
         self.variables["holiday"] = updaters.holiday(
             self.variables["datetime"], self.settings["country"]
         )
@@ -69,6 +68,11 @@ class Environment:
         )
 
         # Next edit variables dependent on other variables (and/or settings)
+        self.variables["workday"] = updaters.workday(
+            self.variables["datetime"],
+            self.variables["holiday"],
+            self.settings["country"],
+        )
         self.variables.update(
             updaters.solar_position(**self.settings, **self.variables)
         )

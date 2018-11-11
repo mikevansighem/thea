@@ -103,7 +103,7 @@ Thea is available under the GNU Lesser General Public License version 3.
 >     copies of the GNU GPL and this license document.
 >
 > -   d) Do one of the following:
-
+>
 >     -   0) Convey the Minimal Corresponding Source under the terms of
 >         this License, and the Corresponding Application Code in a form
 >         suitable for, and under terms that permit, the user to

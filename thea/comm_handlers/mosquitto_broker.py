@@ -2,15 +2,17 @@
 
 # TODO: re-factor so with open can be used on it
 
+import logging
 import subprocess
 import time
 import atexit
 from ..exceptions import MQTTBrokerError, MQTTBrokerPortNotAvailible
-from .. import logger
 
 START_BROKER_TIMEOUT = 5  # seconds
 MOSQUITTO_PORT_IN_USE = "Error: Only one usage of each socket address (protocol/network address/port) is normally permitted."
 MOSQUITTO_STARTED = "Opening ipv4 listen socket on port"
+
+logger = logging.getLogger(__name__)
 
 
 def start_mqtt_broker(port):
@@ -50,7 +52,6 @@ def start_mqtt_broker(port):
                     f'MQTT broker exited with message: "{error_message}"'
                 )
 
-        # TODO: add timeout for starting the broker
         raise MQTTBrokerError(
             f"Starting MQTT broker timed-out after {START_BROKER_TIMEOUT} seconds."
         )

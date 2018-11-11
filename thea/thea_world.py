@@ -1,11 +1,13 @@
 import pickle
+import logging
 
 from .environment import Environment
 from .things import ThingsStore
 from .communicators import CommunicatorStore
 from .env_thing_linker import EnvThingsLinker
-from . import logger
 from .exceptions import NoWorldError
+
+logger = logging.getLogger(__name__)
 
 
 def check_world_loaded(function):

@@ -1,13 +1,14 @@
 # 🚨 Testing and CI
+
 To help us find errors we have a number of tests and checks. Which we can 
 run locally but will also run on our continuous integration (CI) system.
 For any of the commands in this section to work we assume you have installed
 Thea according to the 
-[developer installation](https://mikevansighem
-.github.io/thea/getting_started/#developer-installation) 
+[developer installation]() 
 instructions.
 
 ## Code testing
+
 All our code tests are located in `/tests` and implemented using 
 [pytest](https://docs.pytest.org/en/latest/goodpractices.html). To run 
 on your main python installation use: 
@@ -37,37 +38,17 @@ flake8
 ## Tox
 
 To test against multiple python versions and manage all test environments 
-we use [tox](https://tox.readthedocs.io/en/latest/).
+we use [tox](https://tox.readthedocs.io/en/latest/). To install:
+
+```bash
+pip install tox
+```
+
 To run the entire test suite including formatting and typing checks use:
 
 ```bash
 tox
 ```
-
-## Pre-commit hooks
-
-In order to ease the development of functioning and nicely formatted code
-we use pre-commit hooks managed by [pre-commit](https://pre-commit.com).
-To get setup with our recommended pre-commit hooks navigate to the root of 
-this repository and run:
-
-```bash
-pre-commit install
-```
-
-This takes care of the setup of all the pre-commit hooks defined in
- `.pre-commit-config.yaml`. Upon your next commit your code will be formatted,
- and checked for linting errors. To run the pre-commit hooks manually use:
-
-```bash 
-pre-commit run --all-files
-```
-
-!!! warning
-    If the commit fails due to one of the formatting tools you can simply 
-    retry the commit. Most likely your commit will pass now. If a formatter 
-    needs to make a change the pre-commit checks are always considered to 
-    be failed even if the formatting has been fixed now.
 
 ## Continuous integration
 
@@ -75,7 +56,7 @@ To ease the load on our developers we have set up an extensive continuous
 integration (CI) system. It takes care of building, testing and deployment 
 of code and the documentation. To enable multi-platform testing we had to 
 use both [Travis-CI](https://travis-ci.com/mikevansighem/thea) and 
-[AppVeyor](https://ci.appveyor.com/project/mikevansighem/thea/branch/master) 
+[AppVeyor](https://ci.appveyor.com/project/mikevansighem/theia/branch/master) 
 To see which service is used to perform what tasks refer to the table below. 
 
 |							| Travis-CI				| AppVeyor				|
@@ -89,10 +70,12 @@ To see which service is used to perform what tasks refer to the table below.
 | Typing (mypy)             | :construction:        |                       |
 | Building documentation	| :white_check_mark: 	|						|
 | Deploying documentation	| :white_check_mark: 	|						|
-| Deploying on PyPi         | :construction:        |                       |
+| Deploying on PyPi         | :white_check_mark:    |                       |
+| Building executable       |                       | :construction:        |
+| Deploying executable      |                       | :construction:        |
 
 !!! note
-    Type checking using myp and deploying to PyPi are not implemented yet.
+    Type checking using mypy and building an executable are not functional yet.
 
 To help improve the quality of our code further it is analyzed by 
 [Codacy](https://app.codacy.com/project/mikevansighem/thea/dashboard) 
