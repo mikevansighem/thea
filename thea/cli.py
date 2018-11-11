@@ -32,6 +32,10 @@ def cli_main():
     print(comm.status)
     comm.connect()
     print(comm.status)
+    comm.disconnect()
+    print(comm.status)
+    comm.connect()
+    print(comm.status)
 
     while True:
 

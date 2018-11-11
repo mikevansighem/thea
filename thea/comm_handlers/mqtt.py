@@ -42,9 +42,12 @@ def on_message():
 
 
 def mqtt(message_queue, properties):
+    """Handles the mqtt broker and forwarding messages over mqtt.
+    This will be run as a subprocess. As long as it is alive we can
+    assume the broker and client are both functioning."""
 
     mqtt_port = properties["mqtt_port"]
-    logger.info(f"MQTT comm handler received port property: '{mqtt_port}'")
+    logger.debug(f"MQTT comm handler received port property: '{mqtt_port}'")
 
     # Start the broker
     broker_process = start_mqtt_broker(mqtt_port)
@@ -55,7 +58,7 @@ def mqtt(message_queue, properties):
     # Add port as attribute for logging
     mqtt_client.port = mqtt_port
 
-    # Assign event handlers
+    # TODO Assign event handlers
     # mqtt_client.on_message = on_message
 
     mqtt_client.enable_logger(logger=logger)
@@ -75,6 +78,6 @@ def mqtt(message_queue, properties):
         # Publish pickled data
         mqtt_client.publish(topic, pickle.dumps(data))
 
-        # Disconnect client and shutdown broker
+    # Exit if the broker process stopped
     mqtt_client.disconnect()
     stop_mqtt_broker(broker_process)

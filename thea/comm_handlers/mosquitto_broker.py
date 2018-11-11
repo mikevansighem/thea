@@ -50,7 +50,6 @@ def start_mqtt_broker(port):
                     f'MQTT broker exited with message: "{error_message}"'
                 )
 
-        # TODO: add timeout for starting the broker
         raise MQTTBrokerError(
             f"Starting MQTT broker timed-out after {START_BROKER_TIMEOUT} seconds."
         )

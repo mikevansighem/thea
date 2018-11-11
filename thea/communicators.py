@@ -1,11 +1,15 @@
 """Module with classes used to communicate with hardware. """
 
+import time
 from multiprocessing import Queue, Process
 
 from .base_itemstore import BaseItem, BaseStore
 from .communicator_types import COMMUNICATOR_TYPES
 from .exceptions import CommNotConnectedError
 from . import logger
+
+REMAINING_MESSAGES_TIMEOUT = 3  # seconds
+COMM_STARTUP_TIME = 5  # seconds
 
 
 class Communicator(BaseItem):
@@ -58,30 +62,51 @@ class Communicator(BaseItem):
             # Start daemon process
             self.comm_handler.start()
 
-            # TODO: Wait for confirmation of connection
-            # TODO: Status is retried from the thread
+            # Some time for the process to start
+            time.sleep(COMM_STARTUP_TIME)
 
-            logger.info(f"Successfully connected '{self}'")
+            # Check if the communicator process is running
+            if self.status is True:
+                logger.info(f"Successfully connected '{self}'")
+            else:
+                raise CommNotConnectedError(f"Could not connect '{self}'")
+
+        else:
+            logger.warning(f"'{self}' has already been connected.")
 
     def disconnect(self):
-        """Disconnect and shutdown the daemon process."""
+        """Disconnect and shutdown the daemon process. While allowing
+        some time for the message queue tom clear."""
+
+        # TODO does this kill the broker?
 
         if self.status is True:
 
-            # TODO: add some time to clear the message queue
+            disconnect_time = time.time()
 
-            no_unsend_messages = len(self.message_queue)
+            # Some time to clear the message queue
+            while (self.message_queue.qsize() > 0) or (
+                (time.time() - disconnect_time) > REMAINING_MESSAGES_TIMEOUT
+            ):
+                # small time delay to prevent a "racing loop"
+                time.sleep(0.01)
 
-            # Kill daemon process
-            self.comm_handler.terminate()
+            len_unsend_messages = self.message_queue.qsize()
+
+            # Kill daemon process in a while loop to prevent this function
+            # from exiting while the process is still shutting down
+            while self.status is not False:
+                self.comm_handler.terminate()
 
             # Flush the queue
             while not self.message_queue.empty():
                 self.message_queue.get()
 
             logger.info(
-                f"Disconnected {self} and deleted {no_unsend_messages} unsent messages."
+                f"Disconnected {self} and deleted {len_unsend_messages} unsent messages."
             )
+
+            # TODO refresh the process
 
 
 class CommunicatorStore(BaseStore):

@@ -16,25 +16,31 @@ class NameNotAvailable(TheaException):
     pass
 
 
+class IgnoreSaved(TheaException):
+    """Hack to raise when wanting to ignore the saved state."""
+
+    pass
+
+
 class CommNotConnectedError(TheaException):
     """Raise if a communicator is not connected."""
 
     pass
 
 
-class MQTTBrokerError(TheaException):
+class MQTTError(TheaException):
     """Raise for errors related to the MQTT broker."""
 
     pass
 
 
-class MQTTBrokerPortNotAvailible(TheaException):
-    """Raise if the MQTT broker port is not available."""
+class MQTTBrokerError(MQTTError):
+    """Raise for errors related to the MQTT broker."""
 
     pass
 
 
-class IgnoreSaved(TheaException):
-    """Hack to raise when wanting to ignore the saved state."""
+class MQTTBrokerPortNotAvailible(MQTTError):
+    """Raise if the MQTT broker port is not available."""
 
     pass

@@ -28,7 +28,7 @@ class Environment:
         # Set the non missing variables back to the passed values
         self.variables.update(variables)
 
-        logger.debug(f"Created a new instance of {self}.")
+        logger.debug(f"Created a new instance of '{self}'.")
 
     def __repr__(self) -> str:
 
