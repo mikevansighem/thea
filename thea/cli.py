@@ -3,7 +3,9 @@ import warnings
 import logging
 
 from .thea_world import TheaWorld
-from . import logger
+from . import logging_setup
+
+logger = logging.getLogger(__name__)
 
 
 def cli_main():
@@ -47,22 +49,22 @@ def cli_main():
 def cli_app():
     """Handles initial argument to start main."""
 
+    logging_setup.main_logger()
     logger.info("Started the Thea command-line application.")
 
     parser = argparse.ArgumentParser(description="Start Thea.")
     parser.add_argument(
         "-v", "--verbose", help="Verbose printing.", action="store_true"
     )
+    parser.add_argument(
+        "-q", "--quiet", help="Only warnings and errors printed.", action="store_true"
+    )
     args = parser.parse_args()
 
     # Force debug logging TODO remove
     args.verbose = True
 
-    # Set verbosity level of logger
-    if args.verbose is True:
-        logger.parent.handlers[0].setLevel(logging.DEBUG)
-    else:
-        logger.parent.handlers[0].setLevel(logging.INFO)
+    logging_setup.verbosity(args.verbose, args.quiet)
 
     # Start main
     cli_main()

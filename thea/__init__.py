@@ -14,13 +14,6 @@ try:
 except pkg_resources.DistributionNotFound:
     __version__ = "dev"
 
-# Setup logger before anything else. Necessary because imported sub-modules
-# import logger from the package level.
-from . import logging_setup
-
-logger = logging_setup.main_logger()
-logger.debug(f"Using Thea version: '{__version__}'.")
-
 # Now the logger is setup import the public objects
 from .thea_world import TheaWorld
 from .cli import cli_app

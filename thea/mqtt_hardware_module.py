@@ -7,10 +7,10 @@ import argparse
 import pickle
 import uuid
 import arrow
+import logging
 
 from . import logging_setup
 from .exceptions import IgnoreSaved
-from . import logger
 from .comm_handlers.mqtt_constants import (
     MQTT_ADRESS,
     MQTT_PORT,
@@ -27,6 +27,8 @@ from .functional_endpoints import (  # noqa: F401
 SAVED_STATE_FILE_NAME = "state_MQTT_module.pickle"
 AUTOSAVE_INTERVAL = 60 * 5
 STATUS_POST_INTERVAL = 60
+
+logger = logging.getLogger(__name__)
 
 
 def on_log_callback(client, userdata, level, buf):
@@ -243,12 +245,18 @@ class MQTTHardwareModule:
 def cli_mqtt_hw_module():
     """Handles initial argument to start the hardware module."""
 
+    logging_setup.main_logger()
+    logger.info("Started a Thea MQTT hardware module.")
+
     parser = argparse.ArgumentParser(
         description="Starts a (simulated) MQTT hardware module from the CLI."
     )
     parser.add_argument("-t", "--type", help="Hardware type.", default="pi_mixed")
     parser.add_argument(
         "-v", "--verbose", help="Verbose printing.", action="store_true"
+    )
+    parser.add_argument(
+        "-q", "--quiet", help="Only warnings and errors printed.", action="store_true"
     )
     parser.add_argument(
         "-i",
@@ -258,8 +266,11 @@ def cli_mqtt_hw_module():
     )
     args = parser.parse_args()
 
+    # Force debug logging TODO remove
+    args.verbose = True
+
     # Set verbosity level of logger
-    logging_setup.vebosity(args.verbose)
+    logging_setup.verbosity(args.verbose, args.quiet)
 
     # Initialize and run
     MQTTHardwareModule(args.type, args.ignore_config).run()

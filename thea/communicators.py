@@ -2,14 +2,16 @@
 
 import time
 from multiprocessing import Queue, Process
+import logging
 
 from .base_itemstore import BaseItem, BaseStore
 from .communicator_types import COMMUNICATOR_TYPES
 from .exceptions import CommNotConnectedError
-from . import logger
 
 REMAINING_MESSAGES_TIMEOUT = 3  # seconds
 COMM_STARTUP_TIME = 5  # seconds
+
+logger = logging.getLogger(__name__)
 
 
 class Communicator(BaseItem):

@@ -8,6 +8,10 @@ import logging
 import arrow
 from logging.config import fileConfig
 
+from . import __version__
+
+logger = logging.getLogger(__name__)
+
 # Make log config relative to module
 LOGGING_CONFIG_LOCATION = "logging.ini"
 LOGS_DIRECTORY = "logs"
@@ -16,7 +20,8 @@ LOGS_DIRECTORY = "logs"
 def log_exception(exctype, value, tb):
     """Catches exceptions in the logs"""
 
-    logging.error("Uncaught exception:", exc_info=(exctype, value, tb))
+    logger = logging.getLogger(__name__)
+    logger.error("Uncaught exception:", exc_info=(exctype, value, tb))
 
 
 def main_logger():
@@ -34,15 +39,13 @@ def main_logger():
         # Setup log directory relative to this module
         log_file = log_name + ".log"
         logging.log_location = os.path.join(logs_dir, log_file)
-        logger = fileConfig(
-            os.path.join(os.path.dirname(__file__), LOGGING_CONFIG_LOCATION)
+        fileConfig(
+            os.path.join(os.path.dirname(__file__), LOGGING_CONFIG_LOCATION),
+            disable_existing_loggers=False,
         )
 
     except KeyError:
         raise FileNotFoundError(f"Could not find {LOGGING_CONFIG_LOCATION}.")
-
-    else:
-        logger = logging.getLogger(__name__)
 
     # Set logging level for all other then Thea to warning
     for key in logging.Logger.manager.loggerDict:
@@ -55,7 +58,21 @@ def main_logger():
 
     # add some basic information to the log for debugging
     logger.debug(f"Setup root logger to save to: '{log_file}'.")
+    logger.debug(f"Using Thea version: '{__version__}'.")
     logger.debug(f"Running on hostname: '{socket.gethostname()}'")
     logger.debug(f"Running on platform: '{platform.platform()}'")
 
-    return logger
+
+def verbosity(verbose, quiet):
+
+    # Set verbosity level of logger
+    if verbose is True and quiet is not True:
+        logger.parent.handlers[0].setLevel(logging.DEBUG)
+    elif verbose is not True and quiet is not True:
+        logger.parent.handlers[0].setLevel(logging.INFO)
+    elif verbose is not True and quiet is True:
+        logger.parent.handlers[0].setLevel(logging.WARNING)
+    else:
+        logger.warning(
+            "Setting both quiet and verbose reverts printing to the normal level."
+        )

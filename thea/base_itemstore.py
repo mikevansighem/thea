@@ -1,9 +1,9 @@
 import warnings
+import logging
 from collections import namedtuple
 from string import Template
 
 from .exceptions import NameNotAvailable
-from . import logger
 
 # Type definition for BaseItem, used for tempting and testing only
 BaseType = namedtuple("BaseType", ["default_properties"])
@@ -12,6 +12,8 @@ BASE_TYPES["Empty"] = BaseType(default_properties={})
 
 # Name for creating an item without a specific name
 BASEITEM_NAME_TEMPLATE = Template("$type_$number")
+
+logger = logging.getLogger(__name__)
 
 
 class BaseItem:

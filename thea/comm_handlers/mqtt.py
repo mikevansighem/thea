@@ -15,14 +15,16 @@ How to handle a failed message that has already been removed from the queue??
 
 """
 
+import logging
 import pickle
 from random import randint
 import paho.mqtt.client as paho_mqtt
 from .mosquitto_broker import start_mqtt_broker, stop_mqtt_broker, broker_status
-from .. import logger
 
 # Create random client name
 MQTT_CLIENT_NAME = f"thea_mainapp_{randint(0, 100000000):08d}"
+
+logger = logging.getLogger(__name__)
 
 
 def on_connect():
