@@ -1,11 +1,13 @@
 import arrow
+from ..defenitions import env_updater
 
 
-def datetime(datetime, last_update, time_factor) -> tuple:
+@env_updater
+def date_time(date_time, _last_update, time_factor, **unused) -> tuple:
     """Updates date and time."""
 
-    last_update, passed_time = arrow.utcnow(), arrow.utcnow() - last_update
-    datetime = datetime + (passed_time * time_factor)
+    _last_update, passed_time = arrow.utcnow(), arrow.utcnow() - _last_update
+    date_time = date_time + (passed_time * time_factor)
 
     try:
         real_update_rate = 1 / passed_time.total_seconds()
@@ -15,4 +17,9 @@ def datetime(datetime, last_update, time_factor) -> tuple:
         real_update_rate = 0
         sim_update_rate = 0
 
-    return datetime, last_update, real_update_rate, sim_update_rate
+    return {
+        "date_time": date_time,
+        "_last_update": _last_update,
+        "_real_update_rate": real_update_rate,
+        "_sim_update_rate": sim_update_rate,
+    }

@@ -17,7 +17,6 @@ def cli_main():
     tw = TheaWorld()
     tw.new("test world")
     tw.save("hi")
-    tw.load("hi.tw")
 
     # Add some things
     for _counter in range(0, 5):
@@ -26,24 +25,26 @@ def cli_main():
     # Show the things
     # print(tw.things.get())
 
+    tw.load("hi.tw")
+
     # Add a communicator
     tw.communicators.new(type_="mqtt")
 
     # Connect the communicator
-    comm = tw.communicators.get(name="mqtt0", single_item=True)
-    print(comm.status)
-    comm.connect()
-    print(comm.status)
-    comm.disconnect()
-    print(comm.status)
-    comm.connect()
-    print(comm.status)
+    # comm = tw.communicators.get(name="mqtt0", single_item=True)
+    # print(comm.status)
+    # comm.connect()
+    # print(comm.status)
+    # comm.disconnect()
+    # print(comm.status)
+    # comm.connect()
+    # print(comm.status)
 
     while True:
 
         # Update environment
         tw.update()
-        # tw.environment.print()
+        tw.environment.print()
 
 
 def cli_app():

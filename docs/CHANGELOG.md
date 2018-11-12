@@ -15,6 +15,7 @@ section in our documentation.
 
 ### Added
 
+-   Environment properties now have a unit and help message;
 -   This changelog 😉;
 -   A list of planed features;
 -   A release guide;

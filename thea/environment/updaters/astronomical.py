@@ -1,18 +1,20 @@
 import pandas as pd
 from pvlib.location import Location
+from ..defenitions import env_updater
 
 
+@env_updater
 def solar_position(
-    datetime, latitude, longitude, altitude, temperature, pressure, **unused
+    date_time, latitude, longitude, altitude, temperature, pressure, **unused
 ):
 
     location = Location(
         latitude=latitude,
         longitude=longitude,
-        tz=datetime.datetime.tzname(),
+        tz=date_time.datetime.tzname(),
         altitude=altitude,
     )
-    times = pd.DatetimeIndex(start=datetime.datetime, periods=1, freq="1min")
+    times = pd.DatetimeIndex(start=date_time.datetime, periods=1, freq="1min")
 
     packed = location.get_solarposition(
         times, pressure=pressure, temperature=temperature
@@ -29,4 +31,5 @@ def solar_position(
         "solar_azimuth": azimuth,
         "equation_of_time": equation_of_time,
     }
+
     return solar_position

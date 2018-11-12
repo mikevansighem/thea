@@ -88,7 +88,7 @@ class TheaWorld:
         """Update world."""
 
         self.environment.update()
-        self.env_thing_linker.update(self.things.items, self.environment.variables)
+        self.env_thing_linker.update(self.things.items, self.environment.properties)
 
     @property
     def name(self):

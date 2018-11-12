@@ -82,8 +82,11 @@ class BaseStore:
     item_to_create = BaseItem
     name_template = BASEITEM_NAME_TEMPLATE
 
-    def __init__(self, items=list):
+    def __init__(self, items=None):
         """Creates a new instance of this class."""
+
+        if items is None:
+            items = []
 
         # TODO make items private
         self.items = {}
@@ -136,7 +139,9 @@ class BaseStore:
 
         while not self._name_available(generated_name):
 
-            generated_name = self.name_template.substitute(type_=type_, number=str(counter))
+            generated_name = self.name_template.substitute(
+                type_=type_, number=str(counter)
+            )
             counter += 1
 
         return generated_name
