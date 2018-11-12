@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 class Environment:
-    def __init__(self, variables={}, settings={}) -> None:
+    def __init__(self, variables=dict, settings=dict) -> None:
         """Overwrites default values with passed values."""
 
         # Variables for updating the clock

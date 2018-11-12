@@ -20,7 +20,7 @@ def cli_main():
     tw.load("hi.tw")
 
     # Add some things
-    for i in range(0, 5):
+    for _counter in range(0, 5):
         tw.things.new(type_="shop")
 
     # Show the things

@@ -3,8 +3,6 @@
 ## Quick todo
 -   Environment factory with location presets.
 -   Lunar: face https://pylunar.readthedocs.io/en/latest/usage.html
--   Handle warnings in logging
--   Main calls CLI, CLI maps directly to calls to Thea world and its stores
 
 ## Notes
 -   timezone according to IANA timezone

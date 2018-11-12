@@ -1,7 +1,7 @@
 import arrow
 
 
-def datetime(datetime, last_update, time_factor) -> None:
+def datetime(datetime, last_update, time_factor) -> tuple:
     """Updates date and time."""
 
     last_update, passed_time = arrow.utcnow(), arrow.utcnow() - last_update

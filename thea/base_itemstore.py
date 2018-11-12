@@ -46,7 +46,8 @@ class BaseItem:
         return f'An instance of {self.__class__.__name__} with type: "{self.type_}", name: "{self.name}" and {len(self.properties)} properties'
 
     def saveable_format(self) -> dict:
-        """Returns a packable `dict` that can directly be passed into the init method to reinstanciate this object."""
+        """Returns a packable `dict` that can directly be passed into
+        the init method to re-instantiate this object."""
 
         saveable_format = {}
         saveable_format["type_"] = self.type_
@@ -81,7 +82,7 @@ class BaseStore:
     item_to_create = BaseItem
     name_template = BASEITEM_NAME_TEMPLATE
 
-    def __init__(self, items=[]):
+    def __init__(self, items=list):
         """Creates a new instance of this class."""
 
         # TODO make items private
@@ -103,7 +104,8 @@ class BaseStore:
         return len(self.get())
 
     def saveable_format(self) -> dict:
-        """Returns a pickable `dict` that can directly be passed into the init method to reinstanciate this object."""
+        """Returns a pickable `dict` that can directly be passed into
+        the init method to reinstanciate this object."""
 
         saveable_items = []
 
@@ -119,7 +121,7 @@ class BaseStore:
     def _name_available(self, name: str) -> bool:
         """Returns `True` if the name is available."""
 
-        for type_group, items in self.items.items():
+        for _type_group, items in self.items.items():
             for item in items:
                 if name == item.name:
                     return False
@@ -130,11 +132,11 @@ class BaseStore:
         """Returns the name with lowest available number."""
 
         counter = 0
-        generated_name = self.name_template.substitute(type_=type_, number=counter)
+        generated_name = self.name_template.substitute(type_=type_, number=str(counter))
 
         while not self._name_available(generated_name):
 
-            generated_name = self.name_template.substitute(type_=type_, number=counter)
+            generated_name = self.name_template.substitute(type_=type_, number=str(counter))
             counter += 1
 
         return generated_name
@@ -166,7 +168,7 @@ class BaseStore:
     def edit(self, name: str, **kwargs) -> None:
         """Edit item with `name`."""
 
-        for type_group, items in self.items.items():
+        for _type_group, items in self.items.items():
             for item in enumerate(items):
                 if item.name == name:
 
@@ -205,7 +207,7 @@ class BaseStore:
         output_list = []
 
         if type_ is None and name is None:
-            for type_group, items in self.items.items():
+            for _type_group, items in self.items.items():
                 for item in items:
                     output_list.append(item)
 
@@ -225,7 +227,8 @@ class BaseStore:
             return output_list[0]
 
         elif single_item is True and len(output_list) != 1:
-            raise warnings.warn("Only returned first item matching your query.")
+            warnings.warn("Only returned first item matching your query.")
+            return output_list[0]
 
         else:
             return output_list
