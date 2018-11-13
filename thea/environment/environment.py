@@ -1,96 +1,63 @@
-import arrow
 import logging
-from .default import ENV_SETTINGS, ENV_VARIABLES
-from ..pretty_printing import pretty_string, pretty_dict
 from . import updaters
+from .defenitions import ENV_PROPERTIES
 
 logger = logging.getLogger(__name__)
 
 
 class Environment:
-    def __init__(self, variables=dict, settings=dict) -> None:
+    def __init__(self, properties=None) -> None:
         """Overwrites default values with passed values."""
 
-        # Variables for updating the clock
-        self._last_update = arrow.utcnow()
-        self._real_update_rate = 0
-        self._sim_update_rate = 0
+        self.properties = ENV_PROPERTIES
+        if properties is not None:
+            self.properties.update(properties)
 
-        # Set settings
-        self.settings = ENV_SETTINGS
-        self.settings.update(settings)
-
-        # Set variables according defaults and passed values
-        self.variables = ENV_VARIABLES
-        self.variables.update(variables)
-
-        # Do update to calculate possibly missing variables
+        # Do an update so all fields will be populated
         self.update()
-
-        # Set the non missing variables back to the passed values
-        self.variables.update(variables)
 
         logger.debug(f"Created a new instance of '{self}'.")
 
     def __repr__(self) -> str:
 
-        return f"An instance of {self.__class__.__name__} with {len(self.variables)} variables and {len(self.settings)} settings"
+        return f"an instance of {self.__class__.__name__} with {len(self.properties)} properties"
 
     def saveable_format(self) -> dict:
 
         saveable_format = {}
-        saveable_format["variables"] = self.variables
-        saveable_format["settings"] = self.settings
+        saveable_format["properties"] = self.properties
 
         return saveable_format
 
-    def update(self) -> None:
-        """Updates variables based on the settings and other variables"""
-
-        # Add not yet being calculated variables
-        self.variables["temperature"] = 12
-        self.variables["pressure"] = None
+    def update(self):
+        """Updates all properties that are not fixed."""
 
         # First update date-time because everything is dependent on it
-        self.variables[
-            "datetime"
-        ], self._last_update, self._real_update_rate, self._sim_update_rate = updaters.datetime(
-            self.variables["datetime"], self._last_update, self.settings["time_factor"]
-        )
+        self.properties = updaters.date_time(**self.properties)
 
         # Next edit variables solely dependent upon date-time (and/or settings)
-        self.variables["season"] = updaters.season(self.variables["datetime"])
-        self.variables["holiday"] = updaters.holiday(
-            self.variables["datetime"], self.settings["country"]
-        )
-        self.variables["shops_open"] = self.settings["shops_model"].get_value(
-            self.variables["datetime"]
-        )
+        self.properties = updaters.season(**self.properties)
+        self.properties = updaters.holiday(**self.properties)
+
+        # TODO
+        self.properties["shops_open"].value = self.properties[
+            "shops_model"
+        ].value.get_value(self.properties["date_time"].value)
 
         # Next edit variables dependent on other variables (and/or settings)
-        self.variables["workday"] = updaters.workday(
-            self.variables["datetime"],
-            self.variables["holiday"],
-            self.settings["country"],
-        )
-        self.variables.update(
-            updaters.solar_position(**self.settings, **self.variables)
-        )
-        self.variables.update(
-            updaters.clearsky_irradiance(**self.settings, **self.variables)
-        )
+        self.properties = updaters.workday(**self.properties)
+        self.properties = updaters.solar_position(**self.properties)
+        self.properties = updaters.clearsky_irradiance(**self.properties)
 
         # Update variables dependent on previous (and/or settings)
-        self.variables["solar_wind_direction"] = updaters.angle_to_winddirection(
-            self.variables["solar_azimuth"]
-        )
+        self.properties = updaters.solar_wind_direction(**self.properties)
 
-    def change_settings(self, new_settings):
+    def change_property(self, new_properties):
         """Updates environment settings."""
 
-        self.settings.update(new_settings)
+        self.properties.update(new_properties)
         logger.info(
-            f"Updated settings of {self} with {len(new_settings)} new or changed values."
+            f"Updated properties of '{self}' with {len(new_properties)} new or changed values."
         )
 
     def print(self) -> None:
@@ -100,33 +67,5 @@ class Environment:
         logger.info("environment")
         logger.info("===========")
 
-        logger.info("Last Update: {}".format(self._last_update.time()))
-        logger.info(
-            "Real Update Rate: {}".format(pretty_string(self._real_update_rate))
-        )
-        logger.info("Sim Update Rate: {}".format(pretty_string(self._sim_update_rate)))
-
-        self.print_settings()
-        self.print_values()
-
-    def print_settings(self) -> None:
-        """Prints all environment variables."""
-
-        logger.info("--------------------")
-        logger.info("ENVIRONMENT SETTINGS")
-        logger.info("--------------------")
-
-        pretty_settings = pretty_dict(self.settings)
-        for key in pretty_settings:
-            logger.info("{}: {}".format(key, pretty_settings[key]))
-
-    def print_values(self) -> None:
-        """Prints all environment variables."""
-
-        logger.info("---------------------")
-        logger.info("ENVIRONMENT VARIABLES")
-        logger.info("---------------------")
-
-        pretty_settings = pretty_dict(self.variables)
-        for key in pretty_settings:
-            logger.info("{}: {}".format(key, pretty_settings[key]))
+        for _key, property_ in self.properties.items():
+            logger.info(str(property_))

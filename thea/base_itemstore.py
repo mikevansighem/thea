@@ -2,6 +2,7 @@ import warnings
 import logging
 from collections import namedtuple
 from string import Template
+from typing import Dict, Any
 
 from .exceptions import NameNotAvailable
 
@@ -66,7 +67,7 @@ class BaseItem:
     def _additional_saveable(self) -> dict:
         """Handles saving attributes not defined in the BaseItem class"""
 
-        saveable_format = {}
+        saveable_format: Dict[str, Dict[str, Any]] = {}
 
         return saveable_format
 
@@ -82,8 +83,11 @@ class BaseStore:
     item_to_create = BaseItem
     name_template = BASEITEM_NAME_TEMPLATE
 
-    def __init__(self, items=list):
+    def __init__(self, items=None):
         """Creates a new instance of this class."""
+
+        if items is None:
+            items = []
 
         # TODO make items private
         self.items = {}
@@ -136,7 +140,9 @@ class BaseStore:
 
         while not self._name_available(generated_name):
 
-            generated_name = self.name_template.substitute(type_=type_, number=str(counter))
+            generated_name = self.name_template.substitute(
+                type_=type_, number=str(counter)
+            )
             counter += 1
 
         return generated_name

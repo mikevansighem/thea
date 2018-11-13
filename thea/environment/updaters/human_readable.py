@@ -1,5 +1,7 @@
 """Functions to convert environment variables to a human-comprehensible format."""
 
+from ..defenitions import env_updater
+
 WINDDIRECTIONS = {
     0: "N",
     1: "NNE",
@@ -26,3 +28,9 @@ def angle_to_winddirection(angle):
 
     lookup = int((angle + 11.25) / 22.5)
     return WINDDIRECTIONS[lookup]
+
+
+@env_updater
+def solar_wind_direction(solar_azimuth, **unused):
+
+    return {"solar_wind_direction": angle_to_winddirection(solar_azimuth)}

@@ -1,10 +1,10 @@
-from .season import season
-from .workday import workday
-from .workday import holiday
+from .calendar import season
+from .calendar import workday
+from .calendar import holiday
 from .astronomical import solar_position
 from .stacked_linear_model import StackedLinearModel
-from .date_time import datetime
-from .human_readable import angle_to_winddirection
+from .date_time import date_time
+from .human_readable import solar_wind_direction
 from .irradiance import clearsky_irradiance
 
 __all__ = [
@@ -13,7 +13,7 @@ __all__ = [
     "holiday",
     "solar_position",
     "StackedLinearModel",
-    "datetime",
-    "angle_to_winddirection",
+    "date_time",
+    "solar_wind_direction",
     "clearsky_irradiance",
 ]

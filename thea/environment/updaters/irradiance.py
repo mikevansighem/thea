@@ -1,16 +1,18 @@
 import pandas as pd
 from pvlib.location import Location
+from ..defenitions import env_updater
 
 
-def clearsky_irradiance(datetime, latitude, longitude, altitude, pressure, **unused):
+@env_updater
+def clearsky_irradiance(date_time, latitude, longitude, altitude, pressure, **unused):
 
     location = Location(
         latitude=latitude,
         longitude=longitude,
-        tz=datetime.datetime.tzname(),
+        tz=date_time.datetime.tzname(),
         altitude=altitude,
     )
-    times = pd.DatetimeIndex(start=datetime.datetime, periods=1, freq="1min")
+    times = pd.DatetimeIndex(start=date_time.datetime, periods=1, freq="1min")
 
     irradiance = location.get_clearsky(
         times, pressure=pressure

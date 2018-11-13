@@ -13,10 +13,17 @@ up to a point where it is possible for new contributers to join.
 
 ### Added
 
+-   [ ] Parser for creating markdown documentation from 
+    environment property definitions;
+
+-   [ ] Hardware control over MQTT;
+
 -   [x] A changelog;
--   [ ] Communication with MQTT hardware modules;
+
 -   [x] Bug checking using bugbear;
+
 -   [ ] Testing for `TheaWorld` found in `thea_world.py`;
+
 -   [x] Dependency checks using safety CI
 
 ### Changed
@@ -43,8 +50,7 @@ up to a point where it is possible for new contributers to join.
 ## Later
 
 -   [x] Accelerated model time ⏰
--   [ ] Day and night cycle 🌓
--   [ ] Hardware control over MQTT
+-   [ ] Day and night cycle 🌓 
 -   [ ] Household lighting 🏡
 -   [ ] Weather patterns ⛅️☔⚡️
 -   [ ] Traffic 🚗🚕🚌
