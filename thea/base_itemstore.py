@@ -2,6 +2,7 @@ import warnings
 import logging
 from collections import namedtuple
 from string import Template
+from typing import Dict, Any
 
 from .exceptions import NameNotAvailable
 
@@ -66,7 +67,7 @@ class BaseItem:
     def _additional_saveable(self) -> dict:
         """Handles saving attributes not defined in the BaseItem class"""
 
-        saveable_format = {}
+        saveable_format: Dict[str, Dict[str, Any]] = {}
 
         return saveable_format
 

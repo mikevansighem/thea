@@ -13,26 +13,14 @@ All the default properties are based on those for Amsterdam.
 import arrow
 from arrow import Arrow
 from .updaters.stacked_linear_model import StackedLinearModel
+from typing import Callable, Dict
 
 
-def get_values(func):
-    """A wrapper to retrieve the values from a dictionary of EnvSettings"""
 
-    def wrapper(**kwargs):
-
-        values = {}
-        for key, item in kwargs.items():
-            values[key] = item.value
-
-        return func(**values)
-
-    return wrapper
-
-
-def env_updater(func):
+def env_updater(func: Callable):
     """A wrapper to retrieve and set values in a dictionary of EnvSettings"""
 
-    def wrapper(**kwargs):
+    def wrapper(**kwargs) -> Dict[str, str]:
 
         values = {}
         for key, item in kwargs.items():
@@ -83,7 +71,6 @@ class EnvProperty:
             self.value = value
 
         # TODO add value setter for value where it is checked against allowed and constant
-        # TODO add saveabale format?
 
     def __repr__(self) -> str:
         return (
@@ -105,9 +92,6 @@ class EnvProperty:
             value = self.value
 
         return f"{self.name}: {value} {self.long_unit}"
-
-        self._real_update_rate = 0
-        self._sim_update_rate = 0
 
 
 ENV_PROPERTIES = {}

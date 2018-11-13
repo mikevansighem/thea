@@ -1,9 +1,11 @@
 import arrow
+from arrow import Arrow
 from ..defenitions import env_updater
+from typing import Dict, Union
 
 
 @env_updater
-def date_time(date_time, _last_update, time_factor, **unused) -> tuple:
+def date_time(date_time, _last_update, time_factor, **unused) -> Dict[str, Union[Arrow, float]]:
     """Updates date and time."""
 
     _last_update, passed_time = arrow.utcnow(), arrow.utcnow() - _last_update

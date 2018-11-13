@@ -1,5 +1,6 @@
 import holidays
 from ..defenitions import env_updater
+from typing import Dict, Optional
 
 SPRING = range(80, 172)
 SUMMER = range(172, 264)
@@ -8,7 +9,7 @@ FALL = range(264, 355)
 
 
 @env_updater
-def season(date_time, **unused) -> str:
+def season(date_time, **unused) -> Dict[str, str]:
     """Returns the current season."""
 
     day_of_year = int(date_time.format("DDDD"))
@@ -26,7 +27,7 @@ def season(date_time, **unused) -> str:
 
 
 @env_updater
-def workday(date_time, holiday, country: str, **unused) -> bool:
+def workday(date_time, holiday, country: str, **unused) -> Dict[str, bool]:
     """Returns a `bool` indicating if it is a workday."""
 
     if holiday is False:
@@ -48,7 +49,7 @@ def workday(date_time, holiday, country: str, **unused) -> bool:
 
 
 @env_updater
-def holiday(date_time, country: str, **unused):
+def holiday(date_time, country: str, **unused) -> Dict[str, Optional[str]]:
     """If it is a holiday returns its name as a `str`."""
 
     holiday_calendar = holidays.CountryHoliday(country.upper())
@@ -56,6 +57,6 @@ def holiday(date_time, country: str, **unused):
     if date_time.date() in holiday_calendar:
         return_value = holiday_calendar[date_time.date()]
     else:
-        return_value = False
+        return_value = None
 
     return {"holiday": return_value}

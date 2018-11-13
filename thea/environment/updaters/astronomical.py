@@ -1,12 +1,14 @@
 import pandas as pd
 from pvlib.location import Location
 from ..defenitions import env_updater
+from arrow import Arrow
+from typing import Dict
 
 
 @env_updater
 def solar_position(
-    date_time, latitude, longitude, altitude, temperature, pressure, **unused
-):
+    date_time: Arrow, latitude: float, longitude: float, altitude: float, temperature: float, pressure: float, **unused
+) -> Dict[str, float]:
 
     location = Location(
         latitude=latitude,

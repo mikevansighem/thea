@@ -1,30 +1,30 @@
 import arrow
 
 
-def time_to_seconds(time):
+def time_to_seconds(time) -> float:
 
     return (time.hour * 60 + time.minute) * 60 + time.second
 
 
 class StackedLinearModel:
-    def __init__(self, time_basis):
+    def __init__(self, time_basis) -> None:
 
         self.data_points = []
         self.time_basis = time_basis
 
-    def __repr__(self):
+    def __repr__(self) -> str:
 
         return "An instance of {} with {} datapoints".format(
             self.__class__.__name__, len(self.data_points)
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
 
         return "{} with {} datapoints".format(
             self.__class__.__name__, len(self.data_points)
         )
 
-    def add_point(self, date_time, value):
+    def add_point(self, date_time, value) -> None:
 
         if self.time_basis == "day":
             self.data_points.append((time_to_seconds(date_time.time()), value))
@@ -102,7 +102,7 @@ class StackedLinearModel:
                     date_time - start_time
                 ) + start_value
 
-    def plot(self):
+    def plot(self) -> None:
 
         import matplotlib.pyplot as plt
 
