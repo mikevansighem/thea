@@ -15,26 +15,39 @@ sys.path.insert(0, parentdir)
 # flake8: noqa E402
 import thea
 
-with open("docs/api_refrence/environment_base.md", "r") as file:
-    base_document = file.read()
+REPLACE_KEY = "REPLACE_THIS_WITH_TABLE"
+BASE_FILE = "docs/api_refrence/environment_base.md"
+TARGET_FILE = "docs/api_refrence/environment.md"
 
-table = ""
-table = table + "| Name | Unit | Help message |" + "\n"
-table = table + "| :- | :- | :- |" + "\n"
+def main():
 
-for _key, property_ in thea.ENV_PROPERTIES.items():
+    with open(BASE_FILE, "r", encoding='utf8') as file:
+        base_document = file.read()
 
-    if property_.long_unit != "" and property_.short_unit != "":
-        unit_entry = f"{property_.long_unit} ({property_.short_unit})"
-    else:
-        unit_entry = ""
+    print(f'Opened: "{BASE_FILE}"')
 
-    property_entry = (
-        f"| {property_.name} | {unit_entry} | {property_.help_.replace('.','')} |"
-    )
-    table = table + property_entry + "\n"
+    table = ""
+    table = table + "| Name | Key | Unit | Help message |" + "\n"
+    table = table + "| :- | :- | :- | :- |" + "\n"
 
-output_document = base_document.replace("REPLACE_THIS_WITH_TABLE", table)
+    for key, property_ in sorted(thea.ENV_PROPERTIES.items()):
 
-with open("docs/api_refrence/environment.md", "w") as file:
-    file.write(output_document)
+        if property_.long_unit != "" and property_.short_unit != "":
+            unit_entry = f"{property_.long_unit} ({property_.short_unit})"
+        else:
+            unit_entry = ""
+
+        property_entry = (
+            f"| {property_.name} | `'{key}'` | {unit_entry} | {property_.help_.replace('.','')} |"
+        )
+        table = table + property_entry + "\n"
+
+    output_document = base_document.replace(REPLACE_KEY, table)
+
+    with open(TARGET_FILE, "w", encoding='utf8') as file:
+        file.write(output_document)
+
+    print(f'Saved: "{TARGET_FILE}"')
+
+if __name__ == "__main__":
+    main()
