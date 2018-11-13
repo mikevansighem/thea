@@ -28,6 +28,8 @@ nav:
     - Releasing: dev_guide/releasing.md
 
   - API refrence:
+    - Theia world: api_refrence/theia_world.md
+    - Environment: api_refrence/environment.md
     - Item stores: api_refrence/item_stores.md
 
 theme:

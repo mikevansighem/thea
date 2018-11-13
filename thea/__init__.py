@@ -14,11 +14,13 @@ try:
 except pkg_resources.DistributionNotFound:
     __version__ = "dev"
 
+
 # Now the logger is setup import the public objects
 from .thea_world import TheaWorld
 from .cli import cli_app
 from . import exceptions
 from .mqtt_hardware_module import cli_mqtt_hw_module, MQTTHardwareModule
+from .environment import ENV_PROPERTIES
 
 # Define public API
 __all__ = [
@@ -27,4 +29,5 @@ __all__ = [
     "exceptions",  # Thea specific exceptions
     "TheaWorld",  # Thea base class exposing all functionalities
     "MQTTHardwareModule",  # Mqtt moule base class exposing all functionalities
+    "ENV_PROPERTIES",
 ]
