@@ -103,6 +103,7 @@ jobs:
         - pip install poetry
       script:
         - poetry install -v --extras "docs"
+        - poetry run python scripts/env_properties_to_docs.py
         - poetry run mkdocs build --verbose --clean --strict
       deploy:
         provider: pages
