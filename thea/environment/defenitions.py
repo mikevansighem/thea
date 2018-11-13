@@ -16,7 +16,6 @@ from .updaters.stacked_linear_model import StackedLinearModel
 from typing import Callable, Dict
 
 
-
 def env_updater(func: Callable):
     """A wrapper to retrieve and set values in a dictionary of EnvSettings"""
 
