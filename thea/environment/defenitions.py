@@ -98,7 +98,7 @@ ENV_PROPERTIES = {}
 ENV_PROPERTIES["date_time"] = EnvProperty(
     name="Date and time",
     allowed=Arrow,
-    default=arrow.get(2018, 1, 1, 12, 0, 0, 0, tzinfo="Europe/Amsterdam"),
+    default=arrow.get(2018, 3, 1, 12, 0, 0, 0, tzinfo="Europe/Amsterdam"),
     help_="Date and time.",
 )
 
@@ -218,16 +218,16 @@ ENV_PROPERTIES["solar_zenith"] = EnvProperty(
 
 ENV_PROPERTIES["apparent_solar_elevation"] = EnvProperty(
     name="Apparent solar elevation",
-    long_unit="meters",
-    short_unit="m",
-    help_="Apparent elevation of the sun in meters.",
+    long_unit="degrees",
+    short_unit="°",
+    help_="Apparent elevation of the sun in degrees.",
 )
 
 ENV_PROPERTIES["solar_elevation"] = EnvProperty(
     name="Solar elevation",
-    long_unit="meters",
-    short_unit="m",
-    help_="Elevation of the sun in meters.",
+    long_unit="degrees",
+    short_unit="°",
+    help_="Elevation of the sun in degrees.",
 )
 
 ENV_PROPERTIES["solar_azimuth"] = EnvProperty(
@@ -282,4 +282,21 @@ ENV_PROPERTIES["clear_sky_diffuse_horizontal_irradiance"] = EnvProperty(
     long_unit="watt per square meter",
     short_unit="W/m^2",
     help_="The clear sky diffuse horizontal irradiance in watt per square meter.",
+)
+
+ENV_PROPERTIES["lux"] = EnvProperty(
+    name="Luminance",
+    long_unit="lux",
+    short_unit="lx",
+    help_="Luminous flux per square meter.",
+)
+
+ENV_PROPERTIES["uniform_sky_colour"] = EnvProperty(
+    name="Sky color (uniform model)",
+    help_="Sky color in RGB calculated using the uniform model.",
+)
+
+ENV_PROPERTIES["linear_sky_colour_map"] = EnvProperty(
+    name="Sky color map (linear model)",
+    help_="Sky color map in RGB calculated using the linear model.",
 )

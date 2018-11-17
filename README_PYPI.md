@@ -23,6 +23,7 @@ and actuator control.
 [![GitHub issues](https://img.shields.io/github/issues/mikevansighem/thea.svg)](https://github.com/mikevansighem/thea/issues)
 [![License: LGPL 3](https://img.shields.io/badge/license-LGPL%203-blue.svg)](LICENSE.md)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[![Gitter chat](https://badges.gitter.im/mikevansighem/thea.png)](https://gitter.im/thea_/Lobby)
 [![Say Thanks](https://img.shields.io/badge/say%20thanks-!-blue.svg)](https://saythanks.io/to/mikevansighem)
 
 ---

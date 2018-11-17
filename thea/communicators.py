@@ -8,8 +8,8 @@ from .base_itemstore import BaseItem, BaseStore
 from .communicator_types import COMMUNICATOR_TYPES
 from .exceptions import CommNotConnectedError
 
-REMAINING_MESSAGES_TIMEOUT = 3  # seconds
-COMM_STARTUP_TIME = 5  # seconds
+REMAINING_MESSAGES_TIMEOUT = 2  # seconds
+COMM_STARTUP_TIME = 2  # seconds
 
 logger = logging.getLogger(__name__)
 
@@ -31,20 +31,14 @@ class Communicator(BaseItem):
 
         return kwargs
 
-    def _additional_init(self):
-        """Setup MQTT comm handler"""
-
-        self.comm_handler = Process(
-            target=self.comm_handler,
-            args=(self.message_queue, self.properties),
-            daemon=True,
-        )
-
     @property
     def status(self):
         """Returns weather the comm handling process is running."""
 
-        return self.comm_handler.is_alive()
+        try:
+            return self.comm_handler_process.is_alive()
+        except AttributeError:
+            return False
 
     def send_message(self, adress, data):
         """Adds message to the message queue to be send by the daemon communicator process."""
@@ -59,10 +53,16 @@ class Communicator(BaseItem):
 
         if self.status is False:
 
+            self.comm_handler_process = Process(
+                target=self.comm_handler,
+                args=(self.message_queue, self.properties),
+                daemon=True,
+            )
+
             logger.info(f"Started connecting '{self}'")
 
             # Start daemon process
-            self.comm_handler.start()
+            self.comm_handler_process.start()
 
             # Some time for the process to start
             time.sleep(COMM_STARTUP_TIME)
@@ -98,7 +98,7 @@ class Communicator(BaseItem):
             # Kill daemon process in a while loop to prevent this function
             # from exiting while the process is still shutting down
             while self.status is not False:
-                self.comm_handler.terminate()
+                self.comm_handler_process.terminate()
 
             # Flush the queue
             while not self.message_queue.empty():

@@ -15,9 +15,6 @@ nav:
   - Changelog: CHANGELOG.md
   - License: LICENSE.md
 
-  - Environment:
-    - Solar position: not_available.md
-
   - Hardware:
     - MQTT-module: not_available.md
 

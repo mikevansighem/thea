@@ -123,6 +123,9 @@ dmypy.json
 # Auto created and deleted
 setup.py
 
+# Work in progress
+*/dev/*
+
 # Poetry files
 *.lock
 

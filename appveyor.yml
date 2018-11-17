@@ -61,3 +61,10 @@ notifications:
     on_build_success: false
     on_build_failure: true
     on_build_status_changed: true
+
+  - provider: Webhook
+    url: %GITTER_WEBHOOK_URL%
+    method: POST
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: true

@@ -16,35 +16,32 @@ def cli_main():
     # Setup new Thea Wrapper
     tw = TheaWorld()
     tw.new("test world")
-    tw.save("hi")
 
     # Add some things
-    for _counter in range(0, 5):
-        tw.things.new(type_="shop")
+    # for _counter in range(0, 5):
+    #    tw.things.new(type_="shop")
 
     # Show the things
     # print(tw.things.get())
 
-    tw.load("hi.tw")
+    # tw.save("hi")
+    # tw.load("hi.tw")
 
     # Add a communicator
     tw.communicators.new(type_="mqtt")
 
     # Connect the communicator
     # comm = tw.communicators.get(name="mqtt0", single_item=True)
-    # print(comm.status)
     # comm.connect()
-    # print(comm.status)
     # comm.disconnect()
-    # print(comm.status)
     # comm.connect()
-    # print(comm.status)
 
     while True:
 
         # Update environment
         tw.update()
         tw.environment.print()
+        # tw.environment.live_plot('solar_azimuth')
 
 
 def cli_app():

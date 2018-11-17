@@ -52,7 +52,7 @@ def mqtt(message_queue, properties):
     logger.debug(f"MQTT comm handler received port property: '{mqtt_port}'")
 
     # Start the broker
-    broker_process = start_mqtt_broker(mqtt_port)
+    # broker_process = start_mqtt_broker(mqtt_port)
 
     # Create client object
     mqtt_client = paho_mqtt.Client(MQTT_CLIENT_NAME)
@@ -67,7 +67,7 @@ def mqtt(message_queue, properties):
     mqtt_client.connect("127.0.0.1", mqtt_port)
 
     # While the broker is running
-    while broker_status(broker_process):
+    while True:  # broker_status(broker_process):
 
         mqtt_client.loop()
 

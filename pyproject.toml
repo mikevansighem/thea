@@ -32,6 +32,9 @@ arrow="^0"
 paho-mqtt="^1"
 pvlib="^0"
 holidays = "^0.9.8"
+hbmqtt = "^0.9.5"
+colormath = "^3.0"
+numpy = "^1.15"
 
 
 [tool.poetry.dev-dependencies]
